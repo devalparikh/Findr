@@ -1,0 +1,19 @@
+{
+  "name": "findr",
+  "version": "1.0.0",
+  "description": "Findr",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devalparikh/Findr.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devalparikh/Findr/issues"
+  },
+  "homepage": "https://github.com/devalparikh/Findr#readme"
+}
