@@ -6,6 +6,7 @@ const path = require('path');
 // Configure env vars in env file
 require('dotenv').config();
 
+// init app
 const app = express();
 
 app.use(cors());
