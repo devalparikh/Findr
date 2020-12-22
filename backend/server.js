@@ -15,8 +15,6 @@ app.use(express.json({ limit: '10kb' })); // Parse JSON
 const port = process.env.PORT || 8000;
 const server = http.createServer(app);
 
-console.log("hi");
-
 app.use(express.static('../frontend/build'));
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
