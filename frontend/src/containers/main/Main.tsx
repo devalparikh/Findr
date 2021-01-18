@@ -13,10 +13,10 @@ function Main() {
     <div className="App">
       <Navbar />
       <div>
-        <CategoryCard title="Sports" image={basketballImage}/>
-        <PostCard title="Test" location="Location" review={5.0} reviewCount={69}/>
-        <PostCard title="Test" location="Location" review={5.0} reviewCount={69}/>
-        <PostCard title="Test" location="Location" review={5.0} reviewCount={69}/>
+        <CategoryCard title="Sports" image={basketballImage} />
+        <PostCard title="Test" location="Location" review={5.0} reviewCount={69} />
+        <PostCard title="Test" location="Location" review={5.0} reviewCount={69} />
+        <PostCard title="Test" location="Location" review={5.0} reviewCount={69} />
 
       </div>
     </div>

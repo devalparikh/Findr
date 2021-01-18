@@ -12,14 +12,11 @@ function CategoryCard(props: iCategoryCard) {
 
     return (
         <div>
+            <div className="categorycard-container">
 
+                <div className="categorycard-text">{title}</div>
 
-
-            <div className="inner-card">
-
-                <div className="card-text">{title}</div>
-
-                <div className="findr-card" style={{
+                <div className="categorycard" style={{
                     backgroundImage: `url(${image})`,
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',
@@ -28,8 +25,6 @@ function CategoryCard(props: iCategoryCard) {
                 }}>
 
                 </div>
-
-
             </div>
         </div>
     );

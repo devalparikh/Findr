@@ -5,7 +5,7 @@ import './postCard.css';
 
 interface iPostCard {
     title: string;
-    location:string;
+    location: string;
     review: number;
     reviewCount: number;
 }
@@ -16,24 +16,24 @@ interface iPostCard {
 //  - location
 //  - review - user based
 
-function PostCard(props:iPostCard) {
+function PostCard(props: iPostCard) {
 
     return (
         <div className="postcard-container">
             <div className="postcard-img" style={{
-                    backgroundImage: `url(${postCardHolder})`,
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'no-repeat'
-                }}>
+                backgroundImage: `url(${postCardHolder})`,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundRepeat: 'no-repeat'
+            }}>
             </div>
 
             <div className="postcard-content">
                 <div className="postcard-title"> {props.title} </div>
                 <div className="postcard-location"> {props.location} </div>
-                <div className="postcard-review"> 
-                    <img className="postcard-star" src={star}/> {props.review} 
-                    <span className="postcard-review-count"> ({props.reviewCount} reviews) </span>  
+                <div className="postcard-review">
+                    <img className="postcard-star" src={star} /> {props.review}
+                    <span className="postcard-review-count"> ({props.reviewCount} reviews) </span>
                 </div>
             </div>
         </div>
