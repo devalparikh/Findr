@@ -1,5 +1,4 @@
 import React from 'react';
-import postCardHolder from '../../../images/postcard-placeholder.jpg';
 import star from '../../../images/star.svg';
 import './postCard.css';
 
@@ -8,6 +7,7 @@ interface iPostCard {
     location: string;
     review: number;
     reviewCount: number;
+    image: any;
 }
 
 //Postcard
@@ -21,7 +21,7 @@ function PostCard(props: iPostCard) {
     return (
         <div className="postcard-container">
             <div className="postcard-img" style={{
-                backgroundImage: `url(${postCardHolder})`,
+                backgroundImage: `url(${props.image})`,
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
                 backgroundRepeat: 'no-repeat'
