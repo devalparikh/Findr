@@ -15,22 +15,17 @@
     border-width: 2px;
     border-radius: 20px;
     border-color: white;
-    /* Spacing */
-    padding: 60px;
-    margin: 10px;
     /* Shadows */
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
 }
 
 .card-text {
+    width: inherit;
+    height: inherit;
     position: absolute;
-    
-    top: 38%;
-    transform: translateY(-50%);
-
-    left: 50%;
-    transform: translateX(-50%);
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: white;
     text-align: center;
     font-weight: 800;
