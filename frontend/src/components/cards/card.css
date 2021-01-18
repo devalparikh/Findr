@@ -3,8 +3,16 @@
     width: 300px;
     max-width: 400px;
     margin: auto;
-    margin-bottom: 20px;
+    font-size: 50px;
     position: relative;
+}
+
+@media (max-width: 768px) {
+    .inner-card {
+        height: 200px;
+        width: 200px;
+        font-size: 30px;
+    }
 }
 
 .findr-card {
@@ -29,6 +37,6 @@
     color: white;
     text-align: center;
     font-weight: 800;
-    font-size: 50px;
+    font-size: inherit;
     z-index: 1;
 }
