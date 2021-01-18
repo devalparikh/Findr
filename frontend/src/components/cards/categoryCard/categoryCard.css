@@ -2,9 +2,9 @@
     height: 300px;
     width: 300px;
     max-width: 400px;
-    margin: auto;
     font-size: 50px;
     position: relative;
+    margin: 10px;
 }
 
 @media (max-width: 768px) {
@@ -17,7 +17,7 @@
 
 .findr-card {
     height: inherit;
-    background-color: white;
+    background-color: black;
     /* Border */
     border-style: solid;
     border-width: 2px;

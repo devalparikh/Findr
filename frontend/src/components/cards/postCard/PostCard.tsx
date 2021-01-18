@@ -1,26 +1,40 @@
 import React from 'react';
-import '../card.css';
+import postCardHolder from '../../../images/postcard-placeholder.jpg';
+import star from '../../../images/star.svg';
+import './postCard.css';
 
 interface iPostCard {
     title: string;
+    location:string;
+    review: number;
+    reviewCount: number;
 }
 
-function PostCard(props: iPostCard) {
+//Postcard
+// - First half image
+//  - title - user defined
+//  - location
+//  - review - user based
+
+function PostCard(props:iPostCard) {
 
     return (
-        <div>
+        <div className="postcard-container">
+            <div className="postcard-img" style={{
+                    backgroundImage: `url(${postCardHolder})`,
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat'
+                }}>
+            </div>
 
-
-
-            <div className="inner-card">
-
-                <div className="card-text">hi</div>
-
-                <div className="findr-card">
-
+            <div className="postcard-content">
+                <div className="postcard-title"> {props.title} </div>
+                <div className="postcard-location"> {props.location} </div>
+                <div className="postcard-review"> 
+                    <img className="postcard-star" src={star}/> {props.review} 
+                    <span className="postcard-review-count"> ({props.reviewCount} reviews) </span>  
                 </div>
-
-
             </div>
         </div>
     );

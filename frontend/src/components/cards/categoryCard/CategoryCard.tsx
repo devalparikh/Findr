@@ -1,5 +1,5 @@
 import React from 'react';
-import '../card.css';
+import './categoryCard.css';
 
 interface iCategoryCard {
     title: string;
