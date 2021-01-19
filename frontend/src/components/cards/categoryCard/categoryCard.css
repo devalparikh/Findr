@@ -5,13 +5,24 @@
     font-size: 50px;
     position: relative;
     margin: 10px;
+    border-radius: 20px;
+
+}
+
+.categorycard-container:hover {
+    transition: .15s;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+    cursor: pointer;
 }
 
 .categorycard-body {
     height: inherit;
     background-color: #19180A;
     border-radius: 20px;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+}
+
+.categorycard-body:hover {
+    opacity: 0.9;
 }
 
 /* Overlay text */

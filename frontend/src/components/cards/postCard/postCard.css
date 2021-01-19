@@ -6,6 +6,12 @@
     margin: 10px;
 }
 
+.postcard-container:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+    transition: 0.15s;
+    cursor: pointer;
+}
+
 .postcard-img {
     height: 200px;
     width: 100%;
