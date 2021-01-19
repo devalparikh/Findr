@@ -22,6 +22,7 @@ function Main() {
         <CategoryCard title="Date" image={'https://images.pexels.com/photos/4255483/pexels-photo-4255483.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
         <CategoryCard title="Outdoors" image={'https://images.pexels.com/photos/745045/pexels-photo-745045.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
         <CategoryCard title="Indoors" image={'https://images.pexels.com/photos/1319854/pexels-photo-1319854.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
+        
 
 
       </div>
