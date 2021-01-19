@@ -11,12 +11,12 @@ function CategoryCard(props: iCategoryCard) {
     const { title, image } = props;
 
     return (
-        <div>
+        <div className="categorycard">
             <div className="categorycard-container">
 
                 <div className="categorycard-text">{title}</div>
 
-                <div className="categorycard" style={{
+                <div className="categorycard-body" style={{
                     backgroundImage: `url(${image})`,
                     backgroundPosition: 'center',
                     backgroundSize: 'cover',

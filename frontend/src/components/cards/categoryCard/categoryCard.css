@@ -7,7 +7,7 @@
     margin: 10px;
 }
 
-.categorycard {
+.categorycard-body {
     height: inherit;
     background-color: #19180A;
     border-radius: 20px;
@@ -15,23 +15,27 @@
 }
 
 /* Overlay text */
+
 .categorycard-text {
     width: inherit;
     height: inherit;
     position: absolute;
-    
     /* Vertically Center */
     display: flex;
     align-items: center;
-
     /* Horizontally Center */
     justify-content: center;
-    
     color: #F8F4E3;
     text-align: center;
     font-weight: 800;
     font-size: inherit;
     z-index: 1;
+}
+
+@media (max-width: 477px) {
+    .categorycard {
+        margin: auto;
+    }
 }
 
 @media (max-width: 768px) {

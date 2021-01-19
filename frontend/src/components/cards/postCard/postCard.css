@@ -3,7 +3,7 @@
     background-color: #19180A;
     border-radius: 20px;
     color: #F8F4E3;
-    margin: 10px 10px 10px 10px;
+    margin: 10px;
 }
 
 .postcard-img {
@@ -42,6 +42,15 @@
 
 .postcard-star {
     width: 17px;
+}
+
+@media (max-width: 477px) {
+    .postcard-container {
+        width: 200px;
+        font-size: 15px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 768px) {
