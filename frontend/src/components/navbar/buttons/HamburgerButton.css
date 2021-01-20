@@ -1,8 +1,5 @@
 .ham {
   z-index: 2;
-  position: fixed;
-  right: 0%;
-  top: 0%;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: transform 400ms;
@@ -10,8 +7,8 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
 }
 
 .hamburgerContainer {

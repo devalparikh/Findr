@@ -13,8 +13,12 @@ function Navbar() {
   } 
 
   return (
-    <div className={navBarClass}>         
-        <span className="logo"> Findr </span>
+    <div className={navBarClass}>    
+
+        <div className="navBarContainer">
+          <span className="logo"> Findr </span>
+          <HamburgerButton open={open} setOpen={(isOpen: boolean): void => {setOpen(isOpen)}} />
+        </div>
 
         <div className="searchBarContainer">
           <input className="searchBar" type="text" id="searchBar" name="searchBar" placeholder="Search"/>
@@ -28,7 +32,7 @@ function Navbar() {
         <button className="navBarButton">Account</button>
       </div>
 
-      <HamburgerButton open={open} setOpen={(isOpen: boolean): void => {setOpen(isOpen)}} />
+      
       </div>
   );
 }
