@@ -78,7 +78,7 @@
   top: 7px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 790px) {
   .Navbar {
     flex-direction: column;
     height: 100%;
