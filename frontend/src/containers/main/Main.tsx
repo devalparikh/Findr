@@ -16,7 +16,7 @@ function Main() {
     <div className="App">
       <Navbar />
 
-      <h1 style={{ fontWeight: 'bolder', margin: "60px 40px 10px 40px" }}>Categories</h1>
+      <h1 style={{ fontWeight: 'bolder', margin: "60px 40px 10px 40px", textAlign: 'center' }}>Categories</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', margin: "20px" }}>
         <CategoryCard title="Sports" image={basketballImage} />
         <CategoryCard title="Date" image={'https://images.pexels.com/photos/4255483/pexels-photo-4255483.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
@@ -27,7 +27,7 @@ function Main() {
 
       </div>
 
-      <h1 style={{ fontWeight: 'bolder', margin: "60px 40px 10px 40px" }}>Basketball</h1>
+      <h1 style={{ fontWeight: 'bolder', margin: "60px 40px 10px 40px", textAlign: 'center'}}>Basketball</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', margin: "20px" }}>
         <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} image={postCardHolder} />
         <PostCard title="Test" location="Location" review={5.0} reviewCount={69} image={'https://images.pexels.com/photos/680074/pexels-photo-680074.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />

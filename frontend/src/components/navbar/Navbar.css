@@ -14,7 +14,6 @@
 
 .logo {
   color: #f8f4e3;
-  margin-left: 25px;
 }
 
 .searchBar {
@@ -76,4 +75,58 @@
   width: 20px;
   right: 10px;
   top: 7px;
+}
+
+@media (max-width: 768px) {
+  .Navbar {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .navBarButtonGroup {
+    height: 100%;
+    flex-direction: column;
+    margin: 10px 0px 10px 0px;
+  }
+
+  .navBarButton {
+    margin: 50px 0px 0px 0px;
+  }
+
+  .searchBar {
+    margin: 25px 0px 0px 0px;
+  }
+
+  .searchIcon {
+    margin: 25px 0px 0px 0px;
+  }
+
+  .logo {
+  }
+
+  .navBarOpen {
+    height: 100%;
+  }
+
+  .navBarOpen .logo {
+    text-align: center;
+  }
+
+  .navBarClosed {
+    justify-content: center;
+    flex-direction: row;
+    height: 75px;
+  }
+
+  .navBarClosed .searchBar {
+    display: none;
+  }
+
+  .navBarClosed .navBarButtonGroup {
+    display: none;
+  }
+
+  .navBarClosed .logo {
+    padding-left: 20px;
+  }
 }
