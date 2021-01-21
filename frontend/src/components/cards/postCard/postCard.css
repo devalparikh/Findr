@@ -28,12 +28,12 @@
 
 .postcard-title {
     font-weight: 800;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .postcard-location {
     font-weight: 300;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .postcard-review {
@@ -47,16 +47,7 @@
 }
 
 .postcard-star {
-    width: 13px;
-}
-
-@media (max-width: 477px) {
-    .postcard-container {
-        width: 200px;
-        font-size: 15px;
-        margin: auto;
-        margin-bottom: 10px;
-    }
+    width: 12px;
 }
 
 @media (max-width: 768px) {

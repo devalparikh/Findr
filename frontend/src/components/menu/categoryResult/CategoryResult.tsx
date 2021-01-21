@@ -43,7 +43,7 @@ function CategoryResult() {
 
                 <div className="category-result-header">
                     <div className="category-result-title-group">
-                        <div className="category-result-title">Hockey</div>
+                        <div className="category-result-title">Football</div>
                         <div className="category-result-follow">Follow</div>
                     </div>
                     <div className="category-result-follow">---D</div>
