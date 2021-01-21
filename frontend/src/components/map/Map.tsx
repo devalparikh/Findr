@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import mapboxgl from 'mapbox-gl';
 import './Map.css';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZmluZHJwbGF0Zm9ybWFwcCIsImEiOiJja2s1dHFmdXIwZTlrMm5tbWgwdnBsem1qIn0.q4IDYBY5WNTCyB6VdQXmVg';
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_API_KEY || '';
 
 interface iProps {
 

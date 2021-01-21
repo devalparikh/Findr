@@ -23,3 +23,4 @@
 	- `NODE_ENV` - The environment type
 			- example: "production" 
 	- `PORT` - The port that server.js runs
+	- `REACT_APP_MAPBOX_API_KEY` - The MapBox API key
