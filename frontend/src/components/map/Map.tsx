@@ -20,7 +20,7 @@ function MapBox() {
                 viewport: {
                     ...state.viewport,
                     // @ts-ignore
-                    height: ref.current.offsetHeight, // parent element height
+                    height: "inherit", // parent element height
                     // @ts-ignore
                     width: "inherit"// parent element width
                 }
