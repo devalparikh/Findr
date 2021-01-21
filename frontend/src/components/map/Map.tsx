@@ -57,13 +57,14 @@ class MapBox extends React.Component<iProps, iState> {
 
 
         return (
-            <div>
 
                 <div
+                    style={{ position: 'absolute', margin: '55px 0px 0px 700px' }}
                     // @ts-ignore
                     ref={el => this.mapContainer = el}
-                    className="mapContainer" />
-            </div>
+                    className="mapContainer"
+                />
+
         )
     }
 }

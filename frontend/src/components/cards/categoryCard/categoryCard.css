@@ -1,8 +1,8 @@
 .categorycard-container {
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     max-width: 400px;
-    font-size: 50px;
+    font-size: 30px;
     position: relative;
     margin: 10px;
     border-radius: 20px;
