@@ -5,10 +5,28 @@
   overflow: hidden;
 }
 
-.mapContainer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
+.main-container {
+  display: flex;
+}
+
+.main-menu-container {
+  width: 40%;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 2;
+  box-shadow: 5px 0px 8px 0px #888888;
+}
+
+.main-map-container {
+  width: 60%;
+  height: 100vh;
+}
+
+@media (max-width: 790px) {
+  .main-container {
+    display: inline;
+  }
+  .main-menu-container {
+    width: 100%;
+  }
 }
