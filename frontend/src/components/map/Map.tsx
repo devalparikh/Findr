@@ -40,6 +40,12 @@ class MapBox extends React.Component<iProps, iState> {
             // @ts-ignore
             zoom: this.state.zoom
         });
+
+        // FUTURE: We can use this to adjust the size of the map
+        // map.on('load', function(){
+        //     map.resize();
+        // })
+
         map.on('move', () => {
             this.setState({
                 lng: map.getCenter().lng.toFixed(4),
@@ -59,7 +65,7 @@ class MapBox extends React.Component<iProps, iState> {
         return (
 
                 <div
-                    style={{ position: 'absolute', margin: '55px 0px 0px 700px' }}
+                    style={{ position: 'absolute', margin: '55px 0px 0px 40%' }}
                     // @ts-ignore
                     ref={el => this.mapContainer = el}
                     className="mapContainer"

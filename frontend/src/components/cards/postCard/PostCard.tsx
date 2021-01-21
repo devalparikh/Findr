@@ -19,6 +19,7 @@ interface iPostCard {
 function PostCard(props: iPostCard) {
 
     return (
+        
         <div className="postcard-container">
             <div className="postcard-img" style={{
                 backgroundImage: `url(${props.image})`,
