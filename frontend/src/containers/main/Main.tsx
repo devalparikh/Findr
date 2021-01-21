@@ -7,6 +7,7 @@ import MapBox from '../../components/map/Map';
 import basketballImage from '../../images/basketball.jpeg';
 import postCardHolder from '../../images/postcard-placeholder.jpg';
 import Explore from '../../components/menu/explore/Explore';
+import CategoryResult from '../../components/menu/categoryResult/CategoryResult';
 
 
 //////////////////////
@@ -22,9 +23,13 @@ function Main() {
       <div style={{ display: 'flex' }}>
 
 
-        <div style={{ width: "40%", maxWidth: "700px", height: "100vh", overflowY: "auto" }}>
+        <div style={{ width: "40%", height: "100vh", overflowY: "auto", zIndex: 2, boxShadow: "5px 0px 8px 0px #888888" }}>
           {/* TODO: Pass in array of categories */}
-          <Explore />
+          {/* <Explore /> */}
+
+          {/* TODO: Pass in array of categories */}
+          <CategoryResult />
+
         </div>
 
 

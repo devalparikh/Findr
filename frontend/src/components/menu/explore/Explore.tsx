@@ -1,8 +1,7 @@
 import React from 'react';
 import CategoryCard from '../../../components/cards/categoryCard/CategoryCard';
-import PostCard from '../../../components/cards/postCard/PostCard';
 import basketballImage from '../../../images/basketball.jpeg';
-import postCardHolder from '../../../images/postcard-placeholder.jpg';
+
 
 import './Explore.css'
 
@@ -25,11 +24,6 @@ function Explore() {
                 <CategoryCard title="Sports" image={basketballImage} />
                 <CategoryCard title="Date" image={'https://images.pexels.com/photos/4255483/pexels-photo-4255483.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
                 <CategoryCard title="Outdoors" image={'https://images.pexels.com/photos/745045/pexels-photo-745045.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
-                <CategoryCard title="Indoors" image={'https://images.pexels.com/photos/1319854/pexels-photo-1319854.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
-                <CategoryCard title="Sports" image={basketballImage} />
-                <CategoryCard title="Date" image={'https://images.pexels.com/photos/4255483/pexels-photo-4255483.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
-                <CategoryCard title="Outdoors" image={'https://images.pexels.com/photos/745045/pexels-photo-745045.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
-                <CategoryCard title="Indoors" image={'https://images.pexels.com/photos/1319854/pexels-photo-1319854.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
 
 
             </div>
