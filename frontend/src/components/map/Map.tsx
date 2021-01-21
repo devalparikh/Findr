@@ -22,7 +22,7 @@ function MapBox() {
                     // @ts-ignore
                     height: ref.current.offsetHeight, // parent element height
                     // @ts-ignore
-                    width: ref.current.offsetWidth // parent element width
+                    width: "inherit"// parent element width
                 }
             });
         }
