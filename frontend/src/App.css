@@ -13,7 +13,7 @@
 .main-menu-container {
   width: 30%;
   height: calc(100vh - 55px);
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   z-index: 2;
   box-shadow: 5px 0px 8px 0px #888888;
 }
@@ -33,15 +33,26 @@
 }
 
 @media (max-width: 790px) {
+  .App{
+    overflow-y: scroll;
+  }
   .main-container {
     display: inline;
+    height: auto;
   }
   .main-menu-container {
     width: 100%;
-    height: calc(100vh - 75px);
+    height: inherit;
+    box-shadow: none;
   }
 
   .main-map-container{
     display: none;
+  }
+}
+
+@media (min-width: 791px) {
+  .main-menu-container {
+    overflow-y: scroll;
   }
 }
