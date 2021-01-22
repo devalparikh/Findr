@@ -8,6 +8,8 @@ import basketballImage from '../../images/basketball.jpeg';
 import postCardHolder from '../../images/postcard-placeholder.jpg';
 import Explore from '../../components/menu/explore/Explore';
 import CategoryResult from '../../components/menu/categoryResult/CategoryResult';
+import SubCategoryResult from '../../components/menu/subcategoryResult/SubCategoryResult';
+import ViewPost from '../../components/menu/viewPost/ViewPost';
 
 
 //////////////////////
@@ -41,6 +43,12 @@ function Main() {
 
           {/* TODO: Pass in array of categories */}
           <CategoryResult />
+          
+          {/* TODO: */}
+          {/* <SubCategoryResult categoryName={"Basketball"}/> */}
+
+          {/* TODO: */}
+          {/* <ViewPost/> */}
 
         </div>
 

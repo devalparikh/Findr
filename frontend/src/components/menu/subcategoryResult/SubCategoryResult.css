@@ -1,0 +1,12 @@
+.subcategory-title{
+    text-align: center;
+    margin: 60px 40px 10px 40px;
+    font-weight: 800;
+}
+
+.subcategory-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 20px;
+}
