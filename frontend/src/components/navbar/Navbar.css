@@ -10,8 +10,6 @@
   font-weight: 800;
   font-size: 35px;
   justify-content: space-between;
-  position: fixed;
-  z-index: 100;
 }
 
 .logo {
@@ -84,6 +82,8 @@
   .Navbar {
     flex-direction: column;
     height: 100%;
+    position: fixed;
+    z-index: 100;
   }
 
   .navBarButtonGroup {
