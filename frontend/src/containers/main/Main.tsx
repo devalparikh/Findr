@@ -32,7 +32,7 @@ function Main() {
 
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
 
       <div className="main-container">
 

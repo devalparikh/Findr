@@ -1,8 +1,8 @@
 .App {
   background-color: #F8F4E3;
-  width: 100vw;
-  height: 100vh;
   overflow: hidden;
+  height: 100vh;
+  width: 100vw;
 }
 
 .main-container {
@@ -11,8 +11,8 @@
 
 .main-menu-container {
   width: 30%;
-  height: 100vh;
-  overflow-y: auto;
+  height: calc(100vh - 55px);
+  overflow-y: scroll;
   z-index: 2;
   box-shadow: 5px 0px 8px 0px #888888;
 }
@@ -37,5 +37,6 @@
   }
   .main-menu-container {
     width: 100%;
+    height: calc(100vh - 75px);
   }
 }
