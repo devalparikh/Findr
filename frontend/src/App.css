@@ -11,7 +11,7 @@
 
 .main-menu-container {
   width: 30%;
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
   z-index: 2;
   box-shadow: 5px 0px 8px 0px #888888;
