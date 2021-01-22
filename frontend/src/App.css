@@ -10,7 +10,7 @@
 }
 
 .main-menu-container {
-  width: 40%;
+  width: 30%;
   height: 100vh;
   overflow-y: auto;
   z-index: 2;
@@ -18,7 +18,7 @@
 }
 
 .main-map-container {
-  width: 60%;
+  width: 70%;
   height: 100vh;
 }
 

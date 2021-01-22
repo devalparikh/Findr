@@ -42,13 +42,13 @@ function Main() {
           {/* <Explore /> */}
 
           {/* TODO: Pass in array of categories */}
-          {/* <CategoryResult /> */}
+          <CategoryResult />
           
           {/* TODO: */}
           {/* <SubCategoryResult categoryName={"Basketball"}/> */}
 
           {/* TODO: */}
-          <ViewPost/>
+          {/* <ViewPost/> */}
 
         </div>
 

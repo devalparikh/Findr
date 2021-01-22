@@ -14,21 +14,20 @@ export default function ImageGallery(props:iImageGallery) {
 
     switch(props.type){
         case "postcard":
-            outer_class = "image-gallery-container-card";
-            inner_class = "carousel-container-card";
+            outer_class = "gallery-container-card";
+            inner_class = "image-container-card";
             break;
         case "viewpost":
-            outer_class = "image-gallery-container";
-            inner_class = "carousel-container";
+            outer_class = "gallery-container";
+            inner_class = "image-container";
             break;
         default:
-            outer_class = "image-gallery-container";
-            inner_class = "carousel-container";
+            outer_class = "gallery-container";
+            inner_class = "image-container";
     }
 
     return (
-    <div className={outer_class}>
-      <Carousel>
+      <Carousel className={outer_class}>
           {/* TODO: Add ind as image number to carousel */}
         {props.images.map((img:any, ind: number) => {
            return (
@@ -42,6 +41,5 @@ export default function ImageGallery(props:iImageGallery) {
           )
         })}
       </Carousel>
-    </div>
   );
 }

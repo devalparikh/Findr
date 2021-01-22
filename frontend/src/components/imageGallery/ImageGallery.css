@@ -1,38 +1,34 @@
-.image-gallery-container{
+.gallery-container{
     width: 100%;
-    height: 300px;
-    border-radius: 20px;
-
+    height: 350px;
 }
 
-.carousel-container{
-    height: 300px;
+.image-container{
+    height: 350px;
     width: 100%;
     object-fit: cover;
-    border-radius: 20px;
-
 }
 
 
-.image-gallery-container-card{
+.gallery-container-card{
     width: 100%;
     height: 150px;
     border-radius: 20px;
 
 }
 
-.carousel-container-card {
+.image-container-card {
     height: 150px;
     width: 100%;
-    border-radius: 20px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   
 }
 
+
 .carousel-inner{
-    border-radius: 20px;
+    border-radius: inherit;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    
 }
+
