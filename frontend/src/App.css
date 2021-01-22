@@ -3,6 +3,7 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  position: fixed;
 }
 
 .main-container {
@@ -38,5 +39,9 @@
   .main-menu-container {
     width: 100%;
     height: calc(100vh - 75px);
+  }
+
+  .main-map-container{
+    display: none;
   }
 }

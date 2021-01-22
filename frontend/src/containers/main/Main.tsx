@@ -57,8 +57,6 @@ function Main() {
         <div className="main-map-container">
           { screenSize > breakpoint ? <MapBox /> : <div></div>}
         </div>
-
-
       </div>
     </div>
   );
