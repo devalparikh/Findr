@@ -1,5 +1,7 @@
 .App {
   background-color: #F8F4E3;
+  
+  /* Disable scroll on whole app */
   overflow: hidden;
   height: 100vh;
   width: 100vw;
@@ -11,8 +13,11 @@
 
 .main-menu-container {
   width: 30%;
+  
+  /* Enable scroll on menu */
+  overflow-y: scroll;
   height: calc(100vh - 55px);
-  /* overflow-y: scroll; */
+  
   z-index: 2;
   box-shadow: 5px 0px 8px 0px #888888;
 }
@@ -22,36 +27,37 @@
   height: 100vh;
 }
 
-@media (max-width: 1440px){
-  .main-map-container{
+@media (max-width: 1440px) {
+  .main-map-container {
     width: 60%;
   }
-  .main-menu-container{
+  .main-menu-container {
     width: 40%;
   }
 }
 
 @media (max-width: 790px) {
-  .App{
-    overflow-y: scroll;
+  .App {
+    /* Not using vh to allow app to scroll */
+    /* Take up full size */
+    height: 100%;
+    width: 100%;
   }
   .main-container {
-    display: inline;
-    height: auto;
+    /* display: inline; */
   }
   .main-menu-container {
     width: 100%;
-    height: inherit;
+    
+    /* Make unscrollable
+     since app is now scrollable */
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
+
     box-shadow: none;
   }
-
-  .main-map-container{
+  .main-map-container {
     display: none;
-  }
-}
-
-@media (min-width: 791px) {
-  .main-menu-container {
-    overflow-y: scroll;
   }
 }
