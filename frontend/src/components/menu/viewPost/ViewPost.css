@@ -1,5 +1,51 @@
-.viewpost-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.viewpost-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.viewpost-content {
+  padding: 0px 10px 0px 10px;
+}
+
+.viewpost-location-name {
+  font-weight: 800;
+}
+
+.viewpost-location-address {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.viewpost-category {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.viewpost-subcategory {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.viewpost-rating-container {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 0px 25px 0px;
+}
+
+.viewpost-num-ratings {
+  height: inherit;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0px 0px 0px 5px;
+  font-size: 18px;
+  color: dimgrey;
+}
+
+.viewpost-description {
+  margin: 20px 0px 0px 0px;
+}
+
+.viewpost-subtitle-header {
+  font-weight: bold;
 }

@@ -1,6 +1,10 @@
+html {
+  background-color: #f8f4e3;
+}
+
 .App {
-  background-color: #F8F4E3;
-  
+  background-color: #f8f4e3;
+
   /* Disable scroll on whole app */
   overflow: hidden;
   height: 100vh;
@@ -13,11 +17,11 @@
 
 .main-menu-container {
   width: 30%;
-  
+
   /* Enable scroll on menu */
   overflow-y: scroll;
   height: calc(100vh - 55px);
-  
+
   z-index: 2;
   box-shadow: 5px 0px 8px 0px #888888;
 }
@@ -48,7 +52,7 @@
   }
   .main-menu-container {
     width: 100%;
-    
+
     /* Make unscrollable
      since app is now scrollable */
     height: 100%;
