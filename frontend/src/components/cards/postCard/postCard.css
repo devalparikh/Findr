@@ -52,7 +52,7 @@
 
 @media (max-width: 477px) {
   .postcard-container {
-    margin: auto;
+    /* margin: 0px auto; */
     margin-bottom: 20px;
   }
 }

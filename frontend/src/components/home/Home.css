@@ -17,3 +17,10 @@
     text-align: center;
   }
 }
+
+@media (max-width: 477px) {
+  .home-row {
+    display: flex;
+    justify-content: center;
+  }
+}
