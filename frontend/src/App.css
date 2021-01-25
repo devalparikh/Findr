@@ -59,6 +59,14 @@ html {
   .main-container {
     /* display: inline; */
   }
+
+  .home-container{
+       /* Make unscrollable
+     since app is now scrollable */
+     height: 100%;
+     overflow: hidden;
+     margin: 0;
+  }
   .main-menu-container {
     width: 100%;
 
