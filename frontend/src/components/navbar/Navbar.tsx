@@ -28,13 +28,13 @@ function Navbar() {
 
 
       <div className="navBarButtonGroup">
-        <NavLink exact to='/home' className="navBarButton" activeClassName="selectedNavBarButton">Home</NavLink>
-        <NavLink exact to='/explore' className="navBarButton" activeClassName="selectedNavBarButton">Explore</NavLink>
+        <NavLink onClick={() => setOpen(false)} exact to='/home' className="navBarButton" activeClassName="selectedNavBarButton">Home</NavLink>
+        <NavLink onClick={() => setOpen(false)} exact to='/explore' className="navBarButton" activeClassName="selectedNavBarButton">Explore</NavLink>
         {/* <NavLink exact to='/category-result/1' className="navBarButton" activeClassName="selectedNavBarButton">Post</NavLink> */}
-        <NavLink exact to='/category-result/1' className="navBarButton" activeClassName="selectedNavBarButton">Category</NavLink>
+        <NavLink onClick={() => setOpen(false)} exact to='/category-result/1' className="navBarButton" activeClassName="selectedNavBarButton">Category</NavLink>
         {/* <NavLink exact to='/category-result/1/subcategory-result/2' className="navBarButton" activeClassName="selectedNavBarButton">Account</NavLink> */}
-        <NavLink exact to='/category-result/1/subcategory-result/2' className="navBarButton" activeClassName="selectedNavBarButton">Subcategory</NavLink>
-        <NavLink exact to='/category-result/1/subcategory-result/2/uuid/1' className="navBarButton" activeClassName="selectedNavBarButton">UUID</NavLink>
+        <NavLink onClick={() => setOpen(false)} exact to='/category-result/1/subcategory-result/2' className="navBarButton" activeClassName="selectedNavBarButton">Subcategory</NavLink>
+        <NavLink onClick={() => setOpen(false)} exact to='/category-result/1/subcategory-result/2/uuid/1' className="navBarButton" activeClassName="selectedNavBarButton">UUID</NavLink>
 
       </div>
 

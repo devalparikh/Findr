@@ -125,7 +125,7 @@
   }
 
   .navBarClosed {
-    /* transition: 0.1s; */
+    transition: 0.2s;
     justify-content: center;
     flex-direction: row;
     height: 75px;
