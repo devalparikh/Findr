@@ -26,13 +26,12 @@ import {
 function Main() {
 
   const location = useLocation();
-  console.log(location.pathname);
 
   const [screenSize, SetScreenSize] = useState(window.innerWidth);
   const breakpoint = 790;
 
   useEffect(() => {
-    const handleWindowResize = () => SetScreenSize(window.innerWidth)
+    const handleWindowResize = () => SetScreenSize(window.innerWidth);
     window.addEventListener("resize", handleWindowResize);
 
     // Return a function from the effect that removes the event listener
