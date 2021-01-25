@@ -15,6 +15,14 @@ html {
   display: flex;
 }
 
+.home-container {
+  width: 100%;
+
+  /* Enable scroll on menu */
+  overflow-y: scroll;
+  height: calc(100vh - 55px);
+}
+
 .main-menu-container {
   width: 30%;
 

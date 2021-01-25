@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar/Navbar';
 import CategoryCard from '../../components/cards/categoryCard/CategoryCard';
 import PostCard from '../../components/cards/postCard/PostCard';
 import MapBox from '../../components/map/Map';
+import Home from '../../components/home/Home';
 
 import basketballImage from '../../images/basketball.jpeg';
 import postCardHolder from '../../images/postcard-placeholder.jpg';
@@ -36,8 +37,11 @@ function Main() {
 
       <div className="main-container">
 
+        <div className="home-container">
+          <Home/>
+        </div>
         {/* Menu (left side) */}
-        <div className="main-menu-container">
+        {/* <div className="main-menu-container">
           {/* TODO: Pass in array of categories */}
           {/* <Explore /> */}
 
@@ -48,7 +52,7 @@ function Main() {
           {/* <SubCategoryResult categoryName={"Basketball"}/> */}
 
           {/* TODO: */}
-          <ViewPost 
+          {/* <ViewPost 
             Name="Basketball court with 4 hoops"
             Review={4.5}
             Review_Count={291}
@@ -57,15 +61,15 @@ function Main() {
             Subcategory="Basketball"
             Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
             Images={["https://shop.wilson.com/media/catalog/product/cache/38/image/9df78eab33525d08d6e5fb8d27136e95/c/7/c7dd204a5c8de77cfa036eb232a5e64659c7b2e1_WTB0516_Evolution_v2.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/LeBron_James_Layup_%28Cleveland_vs_Brooklyn_2018%29.jpg/1280px-LeBron_James_Layup_%28Cleveland_vs_Brooklyn_2018%29.jpg", basketballImage, basketballImage]}
-          />
+          /> */}
 
-        </div>
+       {/* </div> */}
 
 
         {/* Map (right side) */}
-        <div className="main-map-container">
+        {/* <div className="main-map-container">
           { screenSize > breakpoint ? <MapBox /> : <div></div>}
-        </div>
+        </div> */}
       </div>
     </div>
   );
