@@ -13,6 +13,7 @@ html {
 
 .main-container {
   display: flex;
+  margin-top: 55px;
 }
 
 .home-container {
@@ -58,6 +59,7 @@ html {
   }
   .main-container {
     /* display: inline; */
+    margin-top: 75px;
   }
 
   .home-container{

@@ -82,6 +82,8 @@
   .Navbar {
     flex-direction: column;
     height: 100%;
+    position: absolute;
+    z-index: 1000;
   }
 
   .navBarButtonGroup {
@@ -109,7 +111,7 @@
   }
 
   .navBarOpen {
-    transition: 0.5s;
+    /* transition: 0.5s; */
     height: 100%;
   }
 
@@ -119,7 +121,7 @@
   }
 
   .navBarClosed {
-    transition: 0.1s;
+    /* transition: 0.1s; */
     justify-content: center;
     flex-direction: row;
     height: 75px;
