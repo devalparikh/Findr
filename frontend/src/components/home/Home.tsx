@@ -24,7 +24,7 @@ function Home() {
 
   return (
   <Container fluid className="full-container">
-    <Row>
+    <Row className="home-row-container">
       <Col xs={12} lg={6}>
         <h1 className="row-title">Just for You</h1>
         <Row>
@@ -49,7 +49,7 @@ function Home() {
       </Col>
     </Row>
 
-    <Row>
+    <Row className="home-row-container">
       <Col xs={12} lg={6}>
         <h1 className="row-title">New Categories For You</h1>
         <Row>
@@ -75,9 +75,9 @@ function Home() {
       </Col>
     </Row>
 
-    <Row>
+    <Row className="home-row-container">
       <Col xs={12} lg={6}>
-        <h1 className="row-title">Just for You</h1>
+        <h1 className="row-title">Top Places</h1>
         <Row>
         <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
           <PostCard title="Test" location="Location" review={5.0} reviewCount={69} images={tempArray} />
@@ -89,12 +89,12 @@ function Home() {
       </Col>
        
       <Col xs={12} lg={6}>
-        <h1 className="row-title">Recently Visited  </h1>
+        <h1 className="row-title"> Top Categories </h1>
         <Row>
-          <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
-          <PostCard title="Test" location="Location" review={5.0} reviewCount={69} images={tempArray} />
-          <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
-          <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
+        <CategoryCard title="Sports" image={basketballImage} />
+          <CategoryCard title="Sports" image={basketballImage} />
+          <CategoryCard title="Sports" image={basketballImage} />
+          <CategoryCard title="Sports" image={basketballImage} />
         </Row>
       
       </Col>
