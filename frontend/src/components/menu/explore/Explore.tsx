@@ -12,7 +12,7 @@ function Explore() {
 
             {/* TODO: Populate using .map() with array passed in as a prop */}
             <div className="explore-category-container">
-                <CategoryCard title="Sports" image={basketballImage} />
+                <CategoryCard title="Sports" image={basketballImage} url="/category-result/sports" />
                 <CategoryCard title="Date" image={'https://images.pexels.com/photos/4255483/pexels-photo-4255483.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
                 <CategoryCard title="Outdoors" image={'https://images.pexels.com/photos/745045/pexels-photo-745045.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
                 <CategoryCard title="Indoors" image={'https://images.pexels.com/photos/1319854/pexels-photo-1319854.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />

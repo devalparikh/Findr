@@ -45,9 +45,13 @@ function Main() {
 
       <div className="main-container">
 
+        <Route exact path="/">
+          <div className="home-container">
+            <Home />
+          </div>
+        </Route>
 
-
-        <Route path="/home">
+        <Route exact path="/home">
           <div className="home-container">
             <Home />
           </div>
@@ -56,13 +60,13 @@ function Main() {
         {/* Menu (left side) */}
         {
 
-          location.pathname !== '/home' &&
+          location.pathname !== '/home' && location.pathname !== '/' &&
 
           <div className="main-menu-container">
 
             <Switch>
 
-              <Route path="/explore">
+              <Route exact path="/explore">
                 {/* TODO: Pass in array of categories */}
                 <Explore />
               </Route>
@@ -100,7 +104,7 @@ function Main() {
 
         {/* Map (right side) */}
         {
-          location.pathname !== '/home' && screenSize > breakpoint &&
+          location.pathname !== '/home' && location.pathname !== '/' && screenSize > breakpoint &&
 
           <div className="main-map-container">
             <MapBox />

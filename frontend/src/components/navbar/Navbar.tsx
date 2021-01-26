@@ -4,12 +4,15 @@ import search from '../../images/search.svg';
 import HamburgerButton from './buttons/HamburgerButton';
 import { NavLink } from "react-router-dom"
 
+import { useHistory } from 'react-router-dom';
+
 function Navbar() {
 
 
   const [open, setOpen] = useState(false);
   const [screenSize, SetScreenSize] = useState(window.innerWidth);
 
+  const history = useHistory();
 
   useEffect(() => {
     const handleWindowResize = () => SetScreenSize(window.innerWidth);
@@ -39,7 +42,7 @@ function Navbar() {
     <div className={navBarClass}>
 
       <div className="navBarContainer">
-        <span className="logo"> Findr </span>
+        <span className="logo" onClick={() => history.push('/') }> Findr </span>
         <HamburgerButton open={open} setOpen={(isOpen: boolean): void => { setOpen(isOpen) }} />
       </div>
 

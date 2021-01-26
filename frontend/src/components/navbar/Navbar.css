@@ -15,6 +15,7 @@
 .logo {
   color: #f8f4e3;
   margin: 0px 0px 0px 20px;
+  cursor: pointer;
 }
 
 .searchBar {

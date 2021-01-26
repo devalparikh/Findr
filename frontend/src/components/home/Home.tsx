@@ -28,7 +28,7 @@ function Home() {
         <Col xs={12} lg={6}>
           <h1 className="row-title">Just for You</h1>
           <Row className="home-row">
-            <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
+            <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} url="/category-result/sports/subcategory-result/basketball/uuid/example_uuid" />
             <PostCard title="Test" location="Location" review={5.0} reviewCount={69} images={tempArray} />
             <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
             <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
@@ -53,7 +53,7 @@ function Home() {
         <Col xs={12} lg={6}>
           <h1 className="row-title">New Categories For You</h1>
           <Row className="home-row">
-            <CategoryCard title="Sports" image={basketballImage} />
+            <CategoryCard title="Sports" image={basketballImage} url="/category-result/sports" />
             <CategoryCard title="Date" image={'https://images.pexels.com/photos/4255483/pexels-photo-4255483.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'} />
             <CategoryCard title="Sports" image={basketballImage} />
             <CategoryCard title="Sports" image={basketballImage} />

@@ -1,12 +1,13 @@
 import React from 'react';
-
 import PostCard from '../../../components/cards/postCard/PostCard';
-
 import postCardHolder from '../../../images/postcard-placeholder.jpg';
-
 import './CategoryResult.css'
+import { useHistory } from 'react-router-dom';
 
 function CategoryResult() {
+
+    const history = useHistory();
+
     let tempArray = [
         'https://images.pexels.com/photos/680074/pexels-photo-680074.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
         'https://images.pexels.com/photos/2891884/pexels-photo-2891884.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260',
@@ -37,11 +38,11 @@ function CategoryResult() {
                         <div className="category-result-title">Basketball</div>
                         <div className="category-result-follow">Follow</div>
                     </div>
-                    <div className="category-result-follow">View All</div>
+                    <div className="category-result-follow" onClick={() => history.push('/category-result/sports/subcategory-result/basketball')}>View All</div>
                 </div>
 
                 <div className="category-result-row">
-                    <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
+                    <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} url="/category-result/sports/subcategory-result/basketball/uuid/example_uuid"/>
                     <PostCard title="Test" location="Location" review={5.0} reviewCount={69} images={tempArray} />
                     <PostCard title="Test" location="Location" review={5.0} reviewCount={69} images={tempArray} />
                     <PostCard title="Test" location="Location" review={5.0} reviewCount={69} images={tempArray} />
