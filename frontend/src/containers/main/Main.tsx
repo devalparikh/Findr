@@ -46,11 +46,11 @@ function Main() {
 
       <div className="main-container">
 
-        <Route exact path="/">
+        {/* <Route exact path="/">
           <div className="home-container">
             <Home />
           </div>
-        </Route>
+        </Route> */}
 
         <Route exact path="/home">
           <div className="home-container">
