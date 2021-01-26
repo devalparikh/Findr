@@ -40,6 +40,7 @@ html {
   height: 100vh;
 }
 
+
 @media (max-width: 1440px) {
   .main-map-container {
     width: 60%;
@@ -82,4 +83,14 @@ html {
   .main-map-container {
     display: none;
   }
+}
+
+
+
+/* Special Fonts */
+
+.error-text {
+  color: rgb(245, 88, 88);
+  /* font-weight: 300; */
+  font-size: 15px;
 }
