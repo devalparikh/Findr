@@ -17,6 +17,7 @@ import {
   Route,
   useLocation
 } from "react-router-dom";
+import CreatePost from '../../components/menu/createPost/CreatePost';
 
 
 //////////////////////
@@ -93,6 +94,10 @@ function Main() {
                   Description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
                   Images={["https://shop.wilson.com/media/catalog/product/cache/38/image/9df78eab33525d08d6e5fb8d27136e95/c/7/c7dd204a5c8de77cfa036eb232a5e64659c7b2e1_WTB0516_Evolution_v2.jpg", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/LeBron_James_Layup_%28Cleveland_vs_Brooklyn_2018%29.jpg/1280px-LeBron_James_Layup_%28Cleveland_vs_Brooklyn_2018%29.jpg", basketballImage, basketballImage]}
                 />
+              </Route>
+
+              <Route exact path="/createpost">
+                <CreatePost/>
               </Route>
 
             </Switch>
