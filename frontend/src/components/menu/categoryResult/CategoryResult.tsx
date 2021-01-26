@@ -24,7 +24,7 @@ function CategoryResult() {
     return (
         <div>
 
-            <div className="category-title">Sports near you</div>
+            <h1 className="category-title">Sports near you</h1>
 
             {/* TODO: Populate using .map() with array passed in as a prop */}
 
