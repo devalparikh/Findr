@@ -18,6 +18,7 @@ import {
   useLocation
 } from "react-router-dom";
 import CreatePost from '../../components/menu/createPost/CreatePost';
+import Login from '../../components/auth/Login';
 
 
 //////////////////////
@@ -58,10 +59,16 @@ function Main() {
           </div>
         </Route>
 
+        <Route exact path="/login">
+          <div className="login-container">
+            <Login/>
+          </div>
+        </Route>
+
         {/* Menu (left side) */}
         {
 
-          location.pathname !== '/home' && location.pathname !== '/' &&
+          location.pathname !== '/home' && location.pathname !== '/login' && location.pathname !== '/' &&
 
           <div className="main-menu-container">
 
@@ -106,10 +113,9 @@ function Main() {
         }
 
 
-
         {/* Map (right side) */}
         {
-          location.pathname !== '/home' && location.pathname !== '/' && screenSize > breakpoint &&
+          location.pathname !== '/home' &&  location.pathname !== '/login' && location.pathname !== '/' && screenSize > breakpoint &&
 
           <div className="main-map-container">
             <MapBox />

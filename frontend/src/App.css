@@ -13,6 +13,8 @@ html {
 
 .main-container {
   display: flex;
+  width: inherit;
+  height: inherit;
 }
 
 .home-container {
@@ -22,6 +24,19 @@ html {
   overflow-x: hidden;
   overflow-y: scroll;
   height: calc(100vh - 55px);
+}
+
+.login-container{
+  width: 100%;
+  height: calc(100vh - 55px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(51,43,43,.3),rgba(51,43,43,.3)),url("./images/login-background-2.jpg");
+  background-position: center;
+  background-size: cover;
+  background-color: black;
 }
 
 .main-menu-container {
@@ -60,6 +75,8 @@ html {
   .main-container {
     /* display: inline; */
     margin-top: 75px;
+    width: inherit;
+    height: inherit;
   }
 
   .home-container{
@@ -69,6 +86,11 @@ html {
      overflow: hidden;
      margin: 0;
   }
+
+  .login-container{
+    height: calc(100vh - 75px);
+  }
+
   .main-menu-container {
     width: 100%;
 
@@ -93,4 +115,60 @@ html {
   color: rgb(245, 88, 88);
   /* font-weight: 300; */
   font-size: 15px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 5px;
+}
+
+/* Form elements */
+  /* Start of submit button styling */
+
+/* TODO: Make this its own component */
+.create-post-submit {
+    height: 45px;
+    margin-top: 80px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 1em;
+    color: white;
+    background-color: #FF6629;
+    font-weight: 800;
+    border: 2px solid transparent;
+    width: 100%;
+}
+
+.create-post-submit:hover {
+  background-color: #ff4900;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+}
+
+.create-post-submit:focus {
+  outline: 0;
+}
+  /* End of submit button styling */
+
+.user-post-input {
+  width: 100%;
+  min-height: 45px;
+  font-weight: 300;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid transparent;
+  background-color: rgba(255, 255, 255, 0.664);
+}
+
+.user-post-input:focus {
+  outline: 0;
+  border: 1px solid grey;
+  background-color: white;
+}
+
+.user-post-input-container {
+  margin-bottom: 20px; 
+}
+
+ /* Tile Fonts */
+.h1-findr-title{
+  font-weight: 800;
+  margin: 40px;
+  text-align: center;
 }
