@@ -33,7 +33,8 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(rgba(51,43,43,.3),rgba(51,43,43,.3)),url("./images/login-background-2.jpg");
+  background-image: url("https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  /* background-image: linear-gradient(rgba(51,43,43,.3),rgba(51,43,43,.3)),url("https://images.pexels.com/photos/917503/pexels-photo-917503.jpeg?cs=srgb&dl=pexels-deva-darshan-917503.jpg&fm=jpg"); */
   background-position: center;
   background-size: cover;
   background-color: black;
