@@ -11,15 +11,9 @@ interface Inputs {
     email?: string
 }
 
-
 interface iAuthCard{
     type: string;
 }
-
-
-
-
-
 
 export default function AuthCard(props:iAuthCard) {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -56,7 +50,7 @@ export default function AuthCard(props:iAuthCard) {
                             ref={register({ required: true })}
                         />
                     </div>
-                    {errors.email && handleFormValidation("email", errors.email.type)}
+                    {errors.email && handleFormValidation("Email", errors.email.type)}
             </div>
 
             <div className="user-post-input-container">
@@ -84,10 +78,6 @@ export default function AuthCard(props:iAuthCard) {
                     </div>
                     <div style={{height:"25px", display: 'flex', position:"relative", alignItems:"center"}}>
                     {errors.password && handleFormValidation("Password", errors.password.type)}          
-
-                        { 
-                            <a style={{position:"absolute", right:"0", color:"dimgray", fontSize:"12px"}} href="forgot-password"> forgot password? </a>
-                        }
                     </div>
             </div>
 
@@ -95,11 +85,11 @@ export default function AuthCard(props:iAuthCard) {
                     name="submit"
                     className="create-post-submit"
                     type="submit"
-                    value="Login"
+                    value="Sign Up"
             />
             </form>
             <div style={{textAlign:"center", color:"dimgray", fontSize:"12px"}}>
-                <span> or <a href="register" style={{color:"dimgray"}}> create an account </a> </span> 
+                <span> or <a href="login" style={{color:"dimgray"}}> Sign In </a> </span> 
             </div>
         </div>
         )
@@ -150,7 +140,7 @@ export default function AuthCard(props:iAuthCard) {
             />
             </form>
             <div style={{textAlign:"center", color:"dimgray", fontSize:"12px"}}>
-                <span> or <a href="register" style={{color:"dimgray"}}> create an account </a> </span> 
+                <span> or <a href="signup" style={{color:"dimgray"}}> create an account </a> </span> 
             </div>
         </div>
         )

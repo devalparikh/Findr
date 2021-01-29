@@ -1,4 +1,6 @@
 import React from 'react'
+import AuthCard from '../cards/authCard/AuthCard'
+import './Auth.css'
 
 // email
 // username
@@ -6,8 +8,7 @@ import React from 'react'
 
 export default function Signup() {
     return (
-        <div>
-            
-        </div>
+        <AuthCard type={"signup"}/>
+
     )
 }

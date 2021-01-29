@@ -1,12 +1,6 @@
-.explore-title {
-    text-align: center;
-    margin: 40px;
-    font-weight: 800;
-}
-
 .explore-category-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
 }

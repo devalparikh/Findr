@@ -35,7 +35,7 @@ export default function CreatePost() {
 
     return (
         <div className="create-post-container">
-            <h1 className="create-post-title">Share a new (location/activity)</h1>
+            <h1 className="h1-findr-title">Share a new (location/activity)</h1>
 
 
             <form className="create-post-input-container" onSubmit={handleSubmit(createPostAPICall)}>

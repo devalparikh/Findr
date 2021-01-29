@@ -26,14 +26,29 @@ html {
   height: calc(100vh - 55px);
 }
 
-.login-container{
+.signup-container {
   width: 100%;
   height: calc(100vh - 55px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url("https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-image: url('https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
+  /* Photo by Leah Kelley from Pexels */
+  /* background-image: linear-gradient(rgba(51,43,43,.3),rgba(51,43,43,.3)),url("https://images.pexels.com/photos/917503/pexels-photo-917503.jpeg?cs=srgb&dl=pexels-deva-darshan-917503.jpg&fm=jpg"); */
+  background-position: center;
+  background-size: cover;
+  background-color: black;
+}
+
+.login-container {
+  width: 100%;
+  height: calc(100vh - 55px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('https://images.pexels.com/photos/325521/pexels-photo-325521.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');
   /* Photo by Leah Kelley from Pexels */
   /* background-image: linear-gradient(rgba(51,43,43,.3),rgba(51,43,43,.3)),url("https://images.pexels.com/photos/917503/pexels-photo-917503.jpeg?cs=srgb&dl=pexels-deva-darshan-917503.jpg&fm=jpg"); */
   background-position: center;
@@ -56,7 +71,6 @@ html {
   width: 70%;
   height: 100vh;
 }
-
 
 @media (max-width: 1440px) {
   .main-map-container {
@@ -81,15 +95,15 @@ html {
     height: inherit;
   }
 
-  .home-container{
-       /* Make unscrollable
+  .home-container {
+    /* Make unscrollable
      since app is now scrollable */
-     height: 100%;
-     overflow: hidden;
-     margin: 0;
+    height: 100%;
+    overflow: hidden;
+    margin: 0;
   }
 
-  .login-container{
+  .login-container {
     height: calc(100vh - 75px);
   }
 
@@ -109,8 +123,6 @@ html {
   }
 }
 
-
-
 /* Special Fonts */
 
 .error-text {
@@ -123,19 +135,18 @@ html {
 }
 
 /* Form elements */
-  /* Start of submit button styling */
+/* Start of submit button styling */
 
 /* TODO: Make this its own component */
 .create-post-submit {
-    height: 45px;
-    margin-top: 80px;
-    padding: 5px 10px 5px 10px;
-    border-radius: 1em;
-    color: white;
-    background-color: #FF6629;
-    font-weight: 800;
-    border: 2px solid transparent;
-    width: 100%;
+  height: 45px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 1em;
+  color: white;
+  background-color: #ff6629;
+  font-weight: 800;
+  border: 2px solid transparent;
+  width: 100%;
 }
 
 .create-post-submit:hover {
@@ -146,7 +157,7 @@ html {
 .create-post-submit:focus {
   outline: 0;
 }
-  /* End of submit button styling */
+/* End of submit button styling */
 
 .user-post-input {
   width: 100%;
@@ -165,12 +176,12 @@ html {
 }
 
 .user-post-input-container {
-  margin-bottom: 20px; 
+  margin-bottom: 20px;
 }
 
- /* Tile Fonts */
-.h1-findr-title{
+/* Tile Fonts */
+.h1-findr-title {
   font-weight: 800;
-  margin: 40px;
+  margin: 30px;
   text-align: center;
 }

@@ -1,13 +1,7 @@
-.subcategory-title{
-    text-align: center;
-    margin: 40px;
-    font-weight: 800;
-}
-
-.subcategory-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 20px;
+.subcategory-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
 }

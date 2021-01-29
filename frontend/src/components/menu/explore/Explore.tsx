@@ -8,7 +8,7 @@ import './Explore.css'
 function Explore() {
     return (
         <div>
-            <h1 className="explore-title">Explore</h1>
+            <h1 className="h1-findr-title">Explore</h1>
 
             {/* TODO: Populate using .map() with array passed in as a prop */}
             <div className="explore-category-container">
