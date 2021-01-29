@@ -1,9 +1,10 @@
 import React from 'react'
 import { useForm, SubmitHandler } from "react-hook-form";
 import lockIcon from "../../../images/padlock.svg"
+import confirmLock from "../../../images/confirmLock.svg"
 import userIcon from "../../../images/user.svg"
+import emailIcon from "../../../images/mail.svg"
 import './AuthCard.css';
-
 
 interface Inputs {
     username: string,
@@ -24,30 +25,36 @@ export default function AuthCard(props:iAuthCard) {
 
     // TODO: Make this into a react hook
     const handleFormValidation = (input_name: string, error_type: string) => {
+        console.log(error_type);
         switch (error_type) {
             case "maxLength":
                 return (<p className="error-text">{input_name} character length exceeded</p>)
             case "required":
                 return (<p className="error-text">{input_name} is required</p>)
+            case "pattern":
+                return (<p className="error-text">{input_name} needs to be a valid email address</p>)
+            case "validate":
+                return (<p className="error-text">{input_name} do not match</p>)
             default:
                 break;
         }
-
     }
 
     function renderSignUp(){
         return (
-        <div className="auth-card">
+        <div className="auth-card" style={{height: "575px"}}>
             <h1 className="h1-findr-title"> Sign Up</h1>
             <form onSubmit={handleSubmit(loginAPICall)}>
             <div className="user-post-input-container">
                     <div style={{position:"relative", height:"46px"}}>
-                        <img className="login-input-icon" src={userIcon}/>
+                        <img className="login-input-icon" src={emailIcon}/>
                         <input
                             name="email"
                             className="login-input-position user-post-input user-post-name"
                             placeholder="Email"
-                            ref={register({ required: true })}
+                            type="email"
+
+                            ref={register({ required: true, pattern: /^\S+@\S+\.\S+$/ })}
                         />
                     </div>
                     {errors.email && handleFormValidation("Email", errors.email.type)}
@@ -58,6 +65,7 @@ export default function AuthCard(props:iAuthCard) {
                         <img className="login-input-icon" src={userIcon}/>
                         <input
                             name="username"
+                            type="username"
                             className="login-input-position user-post-input user-post-name"
                             placeholder="Username"
                             ref={register({ required: true })}
@@ -76,9 +84,28 @@ export default function AuthCard(props:iAuthCard) {
                             ref={register({ required: true })}
                         />
                     </div>
-                    <div style={{height:"25px", display: 'flex', position:"relative", alignItems:"center"}}>
                     {errors.password && handleFormValidation("Password", errors.password.type)}          
+            </div>
+
+            <div className="user-post-input-container">
+                    <div style={{position:"relative", height:"46px"}}>
+                        <img className="login-input-icon" src={confirmLock} style={{width:"16px"}}/>
+                        <input
+                           type="password"
+                           name="confirmPassword"
+                           className="login-input-position user-post-input user-post-name"
+                           placeholder="Confirm Password"
+                           // @ts-ignore
+                           ref={register({ required: true, 
+                            validate: value =>{
+                                if (value !== watch('password')) {
+                                    return (<p className="error-text">Passwords do not match</p>)
+                                } 
+                            }
+                        })}
+                        />
                     </div>
+                    {errors.confirmPassword && handleFormValidation("Passwords", errors.confirmPassword.type)}  
             </div>
 
             <input
@@ -145,8 +172,6 @@ export default function AuthCard(props:iAuthCard) {
         </div>
         )
     }
-
-
 
     return (
         props.type === "login" ? renderLogin() : props.type === "signup" ? renderSignUp() : <div> Insert correct prop type</div>
