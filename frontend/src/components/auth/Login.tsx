@@ -8,6 +8,6 @@ import './Auth.css'
 
 export default function Login() {
     return (
-        <AuthCard />
+        <AuthCard type={"signup"}/>
     )
 }

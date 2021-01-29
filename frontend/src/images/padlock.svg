@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="46px" height="64px" viewBox="0 0 46 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Untitled</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="padlock-(1)" fill="#000000" fill-rule="nonzero">
+            <path d="M45,26 L44,26 L44,21 C44,9.421 34.579,0 23,0 C11.421,0 2,9.421 2,21 L2,26 L1,26 C0.447,26 0,26.447 0,27 L0,59 C0,61.757 2.243,64 5,64 L41,64 C43.757,64 46,61.757 46,59 L46,27 C46,26.447 45.553,26 45,26 Z M4,21 C4,10.523 12.523,2 23,2 C33.477,2 42,10.523 42,21 L42,26 L38,26 L38,21 C38,12.729 31.271,6 23,6 C14.729,6 8,12.729 8,21 L8,26 L4,26 L4,21 Z M10,26 L10,21 C10,13.832 15.832,8 23,8 C30.168,8 36,13.832 36,21 L36,26 L10,26 Z M44,59 C44,60.654 42.654,62 41,62 L5,62 C3.346,62 2,60.654 2,59 L2,28 L3,28 L9,28 L37,28 L43,28 L44,28 L44,59 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

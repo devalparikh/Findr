@@ -9,3 +9,16 @@
     margin-bottom: 50px;;
     padding: 30px;
 }
+
+.login-input-position{
+    position: absolute;
+    padding-left: 38px!important;
+}
+
+.login-input-icon{
+    position: absolute;
+    left: 10px;
+    width: 20px;
+    z-index: 10;
+    height: inherit;
+}
