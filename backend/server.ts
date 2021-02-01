@@ -41,8 +41,6 @@ app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);
 
-console.log(process.env.JWT_KEY)
-
 // Mongoose mongodb atlas connection
 const uri = process.env.ATLAS_URI;
 // Flags parses mongodb connection string
