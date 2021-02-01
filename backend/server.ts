@@ -5,7 +5,6 @@ var cors = require('cors')
 const path = require('path');
 const mongoose = require('mongoose');
 
-import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
 

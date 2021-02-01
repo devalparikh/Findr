@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "npx ts-node server.ts",
+    "dev": "nodemon server.ts"
   },
   "author": "",
   "license": "ISC",
