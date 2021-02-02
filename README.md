@@ -1,6 +1,6 @@
 # Findr
 
-### Setup
+## Setup
 1. Setup frontend (`http://localhost:3000/` or `http://localhost:8000/`)
 	1. `cd frontend`
 	2. `npm install`
@@ -16,12 +16,12 @@
 	1. Return to the root directory `cd ..`
 	2. `npm install`
 
-### Run
+## Run
 - To run development environment  `npm run dev`
 *or*
 - To run production environment `npm run start`
 
-### Production
+## Production
 #### Backend Environment Variables:
 	- `NODE_ENV` - The environment type
 			- example: "production" 
