@@ -22,11 +22,12 @@
 - To run production environment `npm run start`
 
 ## Production
-#### Backend Environment Variables:
-	- `NODE_ENV` - The environment type
-			- example: "production" 
-	- `PORT`- The port that server.js runs
-	- `JWT_KEY` - Secret used to generate and secure JWTs
-	- `ATLAS_URI` - URI to connect to MongoDB
-#### Frontend Environment Variables:
-	- `REACT_APP_MAPBOX_API_KEY` - The MapBox API key
+
+#### Backend Environment Variables
+- `NODE_ENV` - The environment type
+		- example: "production" 
+- `PORT`- The port that server.js runs
+- `JWT_KEY` - Secret used to generate and secure JWTs
+- `ATLAS_URI` - URI to connect to MongoDB
+#### Frontend Environment Variables
+- `REACT_APP_MAPBOX_API_KEY` - The MapBox API key
