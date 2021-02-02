@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
+import 'express-async-errors';
 
 import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
@@ -48,9 +49,9 @@ const db = mongoose.connection;
 db.once('open', () => {
     console.log("MongoDB database connection established successfully")
 })
-.catch(err => {
-    console.log("server not connecting")
-});
+// .catch(err => {
+//     console.log("server not connecting")
+// });
 
 
 app.use(errorHandler);

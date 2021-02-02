@@ -1,10 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
+import axios from 'axios';
 import { useForm, SubmitHandler } from "react-hook-form";
 import lockIcon from "../../../images/padlock.svg"
 import confirmLock from "../../../images/confirmLock.svg"
 import userIcon from "../../../images/user.svg"
 import emailIcon from "../../../images/mail.svg"
+
+
 import './AuthCard.css';
+import { getPreEmitDiagnostics } from 'typescript';
 
 interface Inputs {
     username: string,
@@ -17,15 +21,42 @@ interface iAuthCard{
 }
 
 export default function AuthCard(props:iAuthCard) {
+    const [formFieldErrors, setFormFieldErrors] = useState({password:"", username:"", email:""})
+
+
     const { register, handleSubmit, watch, errors } = useForm();
     const watchAllFields = watch();
     const loginAPICall: SubmitHandler<Inputs> = data => {
         console.log(data);
     }
 
+    const signupAPICall: SubmitHandler<Inputs> = data => {
+        setFormFieldErrors({password:"", username:"", email:""});
+
+        console.log(data);
+        axios.post('http://localhost:8000/api/users/signup', data) 
+        .then(res => {
+            console.log(res);
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log(err.response)
+
+            let errorArray = err.response.data.errors;
+            // errorArray.push({message:"Second Test Error"})
+            errorArray.map( (errObj:any) => { } );
+
+            // let errorMessages = errorArray.join("\n")
+            // setPasswordError(errorMessages)
+            
+        })
+    }
+
+
     // TODO: Make this into a react hook
     const handleFormValidation = (input_name: string, error_type: string) => {
         console.log(error_type);
+        console.log(input_name);
         switch (error_type) {
             case "maxLength":
                 return (<p className="error-text">{input_name} character length exceeded</p>)
@@ -34,7 +65,11 @@ export default function AuthCard(props:iAuthCard) {
             case "pattern":
                 return (<p className="error-text">{input_name} needs to be a valid email address</p>)
             case "validate":
-                return (<p className="error-text">{input_name} do not match</p>)
+              
+                return (<p className="error-text"> {formFieldErrors.password} </p>)
+           
+                // return (<p className="error-text">{input_name} do not match </p>)
+                
             default:
                 break;
         }
@@ -44,7 +79,7 @@ export default function AuthCard(props:iAuthCard) {
         return (
         <div className="auth-card" style={{height: "575px"}}>
             <h1 className="h1-findr-title"> Sign Up</h1>
-            <form onSubmit={handleSubmit(loginAPICall)}>
+            <form onSubmit={handleSubmit(signupAPICall)}>
             <div className="user-post-input-container">
                     <div style={{position:"relative", height:"46px"}}>
                         <img className="login-input-icon" src={emailIcon}/>
@@ -99,13 +134,15 @@ export default function AuthCard(props:iAuthCard) {
                            ref={register({ required: true, 
                             validate: value =>{
                                 if (value !== watch('password')) {
-                                    return (<p className="error-text">Passwords do not match</p>)
-                                } 
+                                    // setPasswordError("Passwords do not match")
+                                    return false
+                                }
                             }
                         })}
                         />
                     </div>
-                    {errors.confirmPassword && handleFormValidation("Passwords", errors.confirmPassword.type)}  
+                    {/* {errors.confirmPassword && handleFormValidation(passwordError, errors.confirmPassword.type)}   */}
+                    {formFieldErrors.password && handleFormValidation(formFieldErrors.password, "validate")} 
             </div>
 
             <input

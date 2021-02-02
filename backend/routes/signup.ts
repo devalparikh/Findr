@@ -1,41 +1,41 @@
-import express, { Request, Response } from 'express';
-import { body } from 'express-validator';
-import jwt from 'jsonwebtoken';
+import express, { Request, Response } from "express";
+import { body } from "express-validator";
+import jwt from "jsonwebtoken";
 
-import { validateRequest } from '../middlewares/validate-request';
-import { User } from '../models/user';
-import { BadRequestError } from '../errors/bad-request-error';
+import { validateRequest } from "../middlewares/validate-request";
+import { User } from "../models/user";
+import { BadRequestError } from "../errors/bad-request-error";
 
 const router = express.Router();
 
 router.post(
-  '/api/users/signup',
+  "/api/users/signup",
   [
-    body('email')
+    body("email")
       .isEmail()
-      .withMessage('Email must be valid'),
-    body('username')
+      .withMessage("Email must be valid")
+      .custom((value) => {
+        const existingEmail = User.findOne({ value });
+        if (existingEmail) return false;
+      })
+      .withMessage("Email in use"),
+    body("username")
       .notEmpty()
-      .withMessage('User must be valid'),
-    body('password')
+      .withMessage("User must be valid")
+      .custom((value) => {
+        const existingUser = User.findOne({ value });
+        if (existingUser) return false;
+      })
+      .withMessage("Username already exists"),
+    body("password")
       .trim()
       .isLength({ min: 4, max: 20 })
-      .withMessage('Password must be between 4 and 20 characters')
+      .withMessage("Password must be between 4 and 20 characters"),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
     const { email, username, password } = req.body;
-    console.log(req.body)
-
-    const existingEmail = await User.findOne({ email });
-    if (existingEmail) {
-      throw new BadRequestError('Email in use');
-    }
-
-    const existingUser = await User.findOne({ username });
-    if (existingUser) {
-      throw new BadRequestError('Username in use');
-    }
+    console.log(req.body);
 
     const user = User.build({ email, username, password });
     await user.save();
@@ -45,14 +45,14 @@ router.post(
       {
         id: user.id,
         username: user.username,
-        email: user.email
+        email: user.email,
       },
       process.env.JWT_KEY!
     );
 
     // Store it on session object
     req.session = {
-      jwt: userJwt
+      jwt: userJwt,
     };
 
     res.status(201).send(user);

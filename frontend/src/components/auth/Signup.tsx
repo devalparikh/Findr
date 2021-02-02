@@ -7,8 +7,8 @@ import './Auth.css'
 // password
 
 export default function Signup() {
+    
     return (
         <AuthCard type={"signup"}/>
-
     )
 }
