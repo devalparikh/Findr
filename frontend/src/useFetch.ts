@@ -2,8 +2,8 @@ import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
 
 export const useFetch = () => {
-    const [result, setResult] = useState();
-    const [error, setError] = useState();
+    const [APIresult, setAPIResult] = useState();
+    const [APIerror, setAPIError] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
     interface IFetchAPI {
@@ -26,15 +26,15 @@ export const useFetch = () => {
 
 
         setIsLoading(true);
-        await new Promise(r => setTimeout(r, 2000));
+        await new Promise(r => setTimeout(r, 1000));
 
         try {
             axios(options)
                 .then(res => {
-                    setResult(res.data);
+                    setAPIResult(res.data);
                 })
                 .catch(err => {
-                    setError(err.response);
+                    setAPIError(err.response);
                 })
                 .finally(() => {
                     setIsLoading(false);
@@ -44,7 +44,7 @@ export const useFetch = () => {
             setIsLoading(false);
         }
 
-    }, [setIsLoading, setResult]);
+    }, [setIsLoading, setAPIResult]);
 
-    return [isLoading, result, error, fetchAPI];
+    return [isLoading, APIresult, APIerror, fetchAPI];
 };

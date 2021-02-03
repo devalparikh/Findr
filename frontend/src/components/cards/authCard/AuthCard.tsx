@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import axios from 'axios';
 import { useForm, SubmitHandler } from "react-hook-form";
 import lockIcon from "../../../images/padlock.svg"
@@ -27,13 +27,22 @@ interface errObj {
 export default function AuthCard(props: iAuthCard) {
     const [formFieldErrors, setFormFieldErrors] = useState({ password: "", username: "", email: "" })
 
-
-    const [isLoading, result, error, fetchAPI] = useFetch();
+    const [isLoading, APIresult, APIerror, fetchAPI] = useFetch();
     console.log(isLoading)
-    console.log(error)
+    console.log(APIerror)
 
     const { register, handleSubmit, watch, errors } = useForm();
     const watchAllFields = watch();
+
+    useEffect(() => {
+        if (APIerror && APIerror.data.errors) {
+            console.log("errors renders")
+            APIerror.data.errors.map((errObj: errObj) => {
+                setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
+            });
+        }
+
+    }, [APIerror])
 
     const loginAPICall: SubmitHandler<Inputs> = data => {
         console.log(data);
@@ -48,10 +57,6 @@ export default function AuthCard(props: iAuthCard) {
             data: _data
         });
 
-        // let errorArray = error.data.errors;
-        // errorArray.map((errObj: errObj) => {
-        //     setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
-        // });
 
         // console.log(data);
         // axios.post('http://localhost:8000/api/users/signup', data)
