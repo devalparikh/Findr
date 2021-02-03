@@ -1,12 +1,13 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import axios from 'axios';
 import { useForm, SubmitHandler } from "react-hook-form";
 import lockIcon from "../../../images/padlock.svg"
 import confirmLock from "../../../images/confirmLock.svg"
 import userIcon from "../../../images/user.svg"
 import emailIcon from "../../../images/mail.svg"
-
+import { useFetch } from "../../../useFetch"
 import './AuthCard.css';
+import { Spinner } from 'react-bootstrap';
 
 interface Inputs {
     username: string,
@@ -27,6 +28,10 @@ export default function AuthCard(props: iAuthCard) {
     const [formFieldErrors, setFormFieldErrors] = useState({ password: "", username: "", email: "" })
 
 
+    const [isLoading, result, error, fetchAPI] = useFetch();
+    console.log(isLoading)
+    console.log(error)
+
     const { register, handleSubmit, watch, errors } = useForm();
     const watchAllFields = watch();
 
@@ -34,23 +39,34 @@ export default function AuthCard(props: iAuthCard) {
         console.log(data);
     }
 
-    const signupAPICall: SubmitHandler<Inputs> = data => {
+    const signupAPICall: SubmitHandler<Inputs> = async _data => {
         setFormFieldErrors({ password: "", username: "", email: "" });
 
-        console.log(data);
-        axios.post('http://localhost:8000/api/users/signup', data)
-            .then(res => {
-                console.log(res.data);
-            })
-            .catch(err => {
+        await fetchAPI({
+            method: 'post',
+            url: 'http://localhost:8000/api/users/signup',
+            data: _data
+        });
 
-                let errorArray = err.response.data.errors;
+        // let errorArray = error.data.errors;
+        // errorArray.map((errObj: errObj) => {
+        //     setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
+        // });
 
-                errorArray.map((errObj: errObj) => {
-                    setFormFieldErrors(prevState => ({ ...prevState, [errObj.field]: errObj.message }));
-                });
+        // console.log(data);
+        // axios.post('http://localhost:8000/api/users/signup', data)
+        //     .then(res => {
+        //         console.log(res.data);
+        //     })
+        //     .catch(err => {
 
-            })
+        //         let errorArray = err.response.data.errors;
+
+        //         errorArray.map((errObj: errObj) => {
+        //             setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
+        //         });
+
+        //     })
     }
 
 
@@ -69,11 +85,7 @@ export default function AuthCard(props: iAuthCard) {
             case "validate":
                 return (<p className="error-text"> {input_name} needs to match</p>)
             case "backend":
-                console.log(input_name);
                 return (<p className="error-text"> {input_name} </p>)
-
-
-            // return (<p className="error-text">{input_name} do not match </p>)
 
             default:
                 break;
@@ -161,12 +173,23 @@ export default function AuthCard(props: iAuthCard) {
                         {formFieldErrors.password && handleFormValidation(formFieldErrors.password, "backend")}
                     </div>
 
-                    <input
-                        name="submit"
-                        className="create-post-submit"
-                        type="submit"
-                        value="Sign Up"
-                    />
+
+                    {
+                        isLoading
+                            ?
+                            <div className="create-post-submit spinner">
+                                <Spinner size="sm" animation="border" color="#f8f4e3" />
+                            </div>
+                            :
+
+                            <input
+                                name="submit"
+                                className="create-post-submit"
+                                type="submit"
+                                value="Sign Up"
+                            />
+                    }
+
                 </form>
                 <div style={{ textAlign: "center", color: "dimgray", fontSize: "12px" }}>
                     <span> or <a href="login" style={{ color: "dimgray" }}> Sign In </a> </span>

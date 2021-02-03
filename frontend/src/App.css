@@ -147,6 +147,10 @@ html {
   font-weight: 800;
   border: 2px solid transparent;
   width: 100%;
+  /* center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .create-post-submit:hover {
@@ -183,5 +187,10 @@ html {
 .h1-findr-title {
   font-weight: 800;
   margin: 30px;
+  text-align: center;
+}
+
+
+.spinner {
   text-align: center;
 }
