@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import axios from 'axios';
 import { useForm, SubmitHandler } from "react-hook-form";
 import lockIcon from "../../../images/padlock.svg"
 import confirmLock from "../../../images/confirmLock.svg"
@@ -83,12 +82,12 @@ export default function AuthCard(props: iAuthCard) {
             <div className="auth-card" style={{ height: "auto", width: "350px" }}>
                 <h1 className="h1-findr-title">Sign Up</h1>
                 <form onSubmit={handleSubmit(signupAPICall)}>
-                    <div className="user-post-input-container">
-                        <div style={{ position: "relative", height: "46px" }}>
-                            <img className="login-input-icon" src={emailIcon} />
+                    <div className="input-container">
+                        <div className="icon-input">
+                            <img className="" src={emailIcon} />
                             <input
                                 name="email"
-                                className="login-input-position user-post-input user-post-name"
+                                className="input user-post-name"
                                 placeholder="Email"
                                 type="email"
 
@@ -99,13 +98,13 @@ export default function AuthCard(props: iAuthCard) {
                         {formFieldErrors.email && handleFormValidation(formFieldErrors.email, "backend")}
                     </div>
 
-                    <div className="user-post-input-container">
-                        <div style={{ position: "relative", height: "46px" }}>
-                            <img className="login-input-icon" src={userIcon} />
+                    <div className="input-container">
+                        <div className="icon-input">
+                            <img src={userIcon} />
                             <input
                                 name="username"
                                 type="username"
-                                className="login-input-position user-post-input user-post-name"
+                                className="input user-post-name"
                                 placeholder="Username"
                                 ref={register({ required: true })}
                             />
@@ -114,13 +113,13 @@ export default function AuthCard(props: iAuthCard) {
                         {formFieldErrors.username && handleFormValidation(formFieldErrors.username, "backend")}
                     </div>
 
-                    <div className="user-post-input-container">
-                        <div style={{ position: "relative", height: "46px" }}>
-                            <img className="login-input-icon" src={lockIcon} style={{ width: "16px" }} />
+                    <div className="input-container">
+                        <div className="icon-input">
+                            <img src={lockIcon} style={{ width: "16px" }} />
                             <input
                                 type="password"
                                 name="password"
-                                className="login-input-position user-post-input user-post-name"
+                                className="input user-post-name"
                                 placeholder="Password"
                                 ref={register({
                                     required: true,
@@ -133,13 +132,13 @@ export default function AuthCard(props: iAuthCard) {
                         {formFieldErrors.password && handleFormValidation(formFieldErrors.password, "backend")}
                     </div>
 
-                    <div className="user-post-input-container">
-                        <div style={{ position: "relative", height: "46px" }}>
+                    <div className="input-container">
+                        <div className="icon-input">
                             <img className="login-input-icon" src={confirmLock} style={{ width: "16px" }} />
                             <input
                                 type="password"
                                 name="confirmPassword"
-                                className="login-input-position user-post-input user-post-name"
+                                className="input user-post-name"
                                 placeholder="Confirm Password"
                                 // @ts-ignore
                                 ref={register({
@@ -157,14 +156,14 @@ export default function AuthCard(props: iAuthCard) {
                     {
                         isLoading
                             ?
-                            <div className="create-post-submit spinner">
+                            <div className="disabled-submit-button spinner">
                                 <Spinner size="sm" animation="border" color="#f8f4e3" />
                             </div>
                             :
 
                             <input
                                 name="submit"
-                                className="create-post-submit"
+                                className="submit-button"
                                 type="submit"
                                 value="Sign Up"
                             />
@@ -183,25 +182,25 @@ export default function AuthCard(props: iAuthCard) {
             <div className="auth-card">
                 <h1 className="h1-findr-title"> Sign In</h1>
                 <form onSubmit={handleSubmit(loginAPICall)}>
-                    <div className="user-post-input-container">
-                        <div style={{ position: "relative", height: "46px" }}>
-                            <img className="login-input-icon" src={userIcon} />
+                    <div className="input-container">
+                        <div className="icon-input">
+                            <img src={userIcon} />
                             <input
                                 name="username"
-                                className="login-input-position user-post-input user-post-name"
+                                className="input user-post-name"
                                 placeholder="Email/Username"
                                 ref={register({ required: true })}
                             />
                         </div>
                         {errors.username && handleFormValidation("Username", errors.username.type)}
                     </div>
-                    <div className="user-post-input-container">
-                        <div style={{ position: "relative", height: "46px" }}>
+                    <div className="input-container">
+                        <div className="icon-input">
                             <img className="login-input-icon" src={lockIcon} style={{ width: "16px" }} />
                             <input
                                 type="password"
                                 name="password"
-                                className="login-input-position user-post-input user-post-name"
+                                className="input user-post-name"
                                 placeholder="Password"
                                 ref={register({ required: true })}
                             />
@@ -217,7 +216,7 @@ export default function AuthCard(props: iAuthCard) {
 
                     <input
                         name="submit"
-                        className="create-post-submit"
+                        className="submit-button"
                         type="submit"
                         value="Login"
                     />

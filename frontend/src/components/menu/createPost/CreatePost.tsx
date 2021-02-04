@@ -40,20 +40,20 @@ export default function CreatePost() {
 
             <form className="create-post-input-container" onSubmit={handleSubmit(createPostAPICall)}>
 
-                <div className="user-post-input-container">
+                <div className="input-container">
                     <input
                         name="name"
-                        className="user-post-input user-post-name"
+                        className="input user-post-name"
                         placeholder="Name (Required)"
                         ref={register({ required: true, maxLength: 10 })}
                     />
                     {errors.name && handleFormValidation("Name", errors.name.type)}
                 </div>
 
-                <div className="user-post-input-container">
+                <div className="input-container">
                     <textarea
                         name="description"
-                        className="user-post-input user-post-description"
+                        className="input user-post-description"
                         placeholder="Description (Required)"
                         rows={6}
                         ref={register({ required: true, maxLength: descriptionCharacterLimit })}
@@ -84,10 +84,10 @@ export default function CreatePost() {
                     </div>
                 </div>
 
-                <div className="user-post-input-container">
+                <div className="input-container">
                     <input
                         name="location"
-                        className="user-post-input user-post-location"
+                        className="input user-post-location"
                         placeholder="(disabled) Select a location on the map"
                         disabled={true}
                         ref={register}
@@ -97,7 +97,7 @@ export default function CreatePost() {
 
                 <input
                     name="submit"
-                    className="create-post-submit"
+                    className="submit-button"
                     type="submit"
                 />
 

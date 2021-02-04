@@ -123,7 +123,15 @@ html {
   }
 }
 
+
+
+
 /* Special Fonts */
+.h1-findr-title {
+  font-weight: 800;
+  margin: 30px;
+  text-align: center;
+}
 
 .error-text {
   color: rgb(245, 88, 88);
@@ -133,12 +141,13 @@ html {
   margin-bottom: 0px;
   margin-left: 5px;
 }
+/* End of Special Fonts */
 
-/* Form elements */
-/* Start of submit button styling */
 
-/* TODO: Make this its own component */
-.create-post-submit {
+
+
+/* Button Styles */
+.submit-button {
   height: 45px;
   padding: 5px 10px 5px 10px;
   border-radius: 1em;
@@ -152,18 +161,38 @@ html {
   justify-content: center;
   align-items: center;
 }
-
-.create-post-submit:hover {
+.submit-button:hover {
   background-color: #ff4900;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
 }
-
-.create-post-submit:focus {
+.submit-button:focus {
   outline: 0;
+  border: 1px solid black;
 }
-/* End of submit button styling */
 
-.user-post-input {
+.disabled-submit-button {
+  height: 45px;
+  padding: 5px 10px 5px 10px;
+  border-radius: 1em;
+  color: white;
+  background-color: #ff662960;
+  font-weight: 800;
+  border: 2px solid transparent;
+  width: 100%;
+  /* center vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* End of Button Styles */
+
+
+
+
+
+/* Input Styles */
+.input {
   width: 100%;
   min-height: 45px;
   font-weight: 300;
@@ -172,25 +201,39 @@ html {
   border: 1px solid transparent;
   background-color: rgba(255, 255, 255, 0.664);
 }
-
-.user-post-input:focus {
+.input:focus {
   outline: 0;
   border: 1px solid grey;
   background-color: white;
 }
 
-.user-post-input-container {
+.icon-input {
+  position: relative;
+  height: 45px;
+}
+.icon-input input {
+  position: absolute;
+  padding-left: 38px!important;
+}
+.icon-input img {
+  position: absolute;
+  left: 10px;
+  width: 20px;
+  z-index: 10;
+  height: inherit;
+}
+
+.input-container {
   margin-bottom: 20px;
 }
-
-/* Tile Fonts */
-.h1-findr-title {
-  font-weight: 800;
-  margin: 30px;
-  text-align: center;
-}
+/* End of Input Styles */
 
 
+
+
+
+/* Spinner Styles */
 .spinner {
   text-align: center;
 }
+/* End of Spinner Styles */
