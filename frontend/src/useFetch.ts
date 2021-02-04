@@ -14,6 +14,9 @@ export const useFetch = () => {
     }
 
     const fetchAPI: any = useCallback(async ({ method, url, data }: IFetchAPI) => {
+
+        url = process.env.NODE_ENV === 'production' ? url : `http://localhost:8000/${url}`;
+
         let options: any = {
             method,
             url,
@@ -23,7 +26,6 @@ export const useFetch = () => {
             },
             data
         };
-
 
         setIsLoading(true);
         await new Promise(r => setTimeout(r, 1000));

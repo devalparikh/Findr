@@ -28,50 +28,31 @@ export default function AuthCard(props: iAuthCard) {
     const [formFieldErrors, setFormFieldErrors] = useState({ password: "", username: "", email: "" })
 
     const [isLoading, APIresult, APIerror, fetchAPI] = useFetch();
-    console.log(isLoading)
-    console.log(APIerror)
 
     const { register, handleSubmit, watch, errors } = useForm();
     const watchAllFields = watch();
 
     useEffect(() => {
+        // Update form errors
         if (APIerror && APIerror.data.errors) {
-            console.log("errors renders")
             APIerror.data.errors.map((errObj: errObj) => {
                 setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
             });
         }
-
     }, [APIerror])
 
     const loginAPICall: SubmitHandler<Inputs> = data => {
         console.log(data);
     }
 
-    const signupAPICall: SubmitHandler<Inputs> = async _data => {
+    const signupAPICall: SubmitHandler<Inputs> = async form_data => {
         setFormFieldErrors({ password: "", username: "", email: "" });
-
+        
         await fetchAPI({
             method: 'post',
-            url: 'http://localhost:8000/api/users/signup',
-            data: _data
+            url: 'api/users/signup',
+            data: form_data
         });
-
-
-        // console.log(data);
-        // axios.post('http://localhost:8000/api/users/signup', data)
-        //     .then(res => {
-        //         console.log(res.data);
-        //     })
-        //     .catch(err => {
-
-        //         let errorArray = err.response.data.errors;
-
-        //         errorArray.map((errObj: errObj) => {
-        //             setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
-        //         });
-
-        //     })
     }
 
 
@@ -116,8 +97,6 @@ export default function AuthCard(props: iAuthCard) {
                         </div>
                         {errors.email && handleFormValidation("Email", errors.email.type)}
                         {formFieldErrors.email && handleFormValidation(formFieldErrors.email, "backend")}
-
-
                     </div>
 
                     <div className="user-post-input-container">
@@ -133,9 +112,8 @@ export default function AuthCard(props: iAuthCard) {
                         </div>
                         {errors.username && handleFormValidation("Username", errors.username.type)}
                         {formFieldErrors.username && handleFormValidation(formFieldErrors.username, "backend")}
-
-
                     </div>
+
                     <div className="user-post-input-container">
                         <div style={{ position: "relative", height: "46px" }}>
                             <img className="login-input-icon" src={lockIcon} style={{ width: "16px" }} />
@@ -153,8 +131,6 @@ export default function AuthCard(props: iAuthCard) {
                         </div>
                         {errors.password && handleFormValidation("Password", errors.password.type)}
                         {formFieldErrors.password && handleFormValidation(formFieldErrors.password, "backend")}
-
-
                     </div>
 
                     <div className="user-post-input-container">
@@ -177,7 +153,6 @@ export default function AuthCard(props: iAuthCard) {
                         {errors.confirmPassword && handleFormValidation("Passwords", errors.confirmPassword.type)}
                         {formFieldErrors.password && handleFormValidation(formFieldErrors.password, "backend")}
                     </div>
-
 
                     {
                         isLoading
