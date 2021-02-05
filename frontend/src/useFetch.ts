@@ -10,10 +10,11 @@ export const useFetch = () => {
         method: string,
         url: string,
         data?: any,
-        config?: any
+        config?: any,
+        withCredentials?: boolean
     }
 
-    const fetchAPI: any = useCallback(async ({ method, url, data }: IFetchAPI) => {
+    const fetchAPI: any = useCallback(async ({ method, url, data = null, config = null, withCredentials = false }: IFetchAPI) => {
 
         url = process.env.NODE_ENV === 'production' ? url : `http://localhost:8000/${url}`;
 
@@ -24,7 +25,8 @@ export const useFetch = () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json;charset=UTF-8'
             },
-            data
+            data,
+            withCredentials: withCredentials
         };
 
         setIsLoading(true);

@@ -33,7 +33,14 @@ app.use(
 app.use(json());
 
 
-app.use(cors());
+app.use(cors({
+    origin: [
+        'http://localhost:3000',
+        'http://localhost:8000',
+        'https://app-findr.herokuapp.com',
+    ],
+    credentials: true
+}));
 app.use(express.json({ limit: '10kb' })); // Parse JSON
 
 app.use(currentUserRouter);
