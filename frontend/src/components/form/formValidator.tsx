@@ -14,6 +14,8 @@ export const handleFormValidation = (input_name: string, error_type: string) => 
         case "backend":
             return (<p className="error-text"> {input_name} </p>)
 
+            // TODO: add future case
+
         default:
             break;
     }
