@@ -8,6 +8,7 @@ import { useFetch } from "../../../useFetch"
 import './AuthCard.css';
 import { Spinner } from 'react-bootstrap';
 import { handleFormValidation } from '../../form/formValidator';
+import { url } from 'inspector';
 
 interface Inputs {
     username: string,
@@ -28,6 +29,7 @@ export default function AuthCard(props: iAuthCard) {
     const [formFieldErrors, setFormFieldErrors] = useState({ password: "", username: "", email: "" })
 
     const [isLoading, APIresult, APIerror, fetchAPI] = useFetch();
+    console.log(APIerror);
 
     const { register, handleSubmit, watch, errors } = useForm();
     const watchAllFields = watch();
@@ -41,17 +43,26 @@ export default function AuthCard(props: iAuthCard) {
         }
     }, [APIerror])
 
-    const loginAPICall: SubmitHandler<Inputs> = data => {
-        console.log(data);
+    const loginAPICall: SubmitHandler<Inputs> = async form_data => {
+        setFormFieldErrors({ password: "", username: "", email: "" });
+
+        await fetchAPI({
+            method: 'post',
+            url: 'api/users/signin',
+            data: form_data,
+            withCredentials: true
+        });
+
     }
 
     const signupAPICall: SubmitHandler<Inputs> = async form_data => {
         setFormFieldErrors({ password: "", username: "", email: "" });
-        
+
         await fetchAPI({
             method: 'post',
             url: 'api/users/signup',
-            data: form_data
+            data: form_data,
+            withCredentials: true
         });
     }
 
@@ -167,11 +178,13 @@ export default function AuthCard(props: iAuthCard) {
                             <input
                                 name="username"
                                 className="input user-post-name"
-                                placeholder="Email/Username"
+                                placeholder="Username"
                                 ref={register({ required: true })}
                             />
                         </div>
                         {errors.username && handleFormValidation("Username", errors.username.type)}
+                        {formFieldErrors.username && handleFormValidation(formFieldErrors.username, "backend")}
+
                     </div>
                     <div className="input-container">
                         <div className="icon-input">
@@ -186,6 +199,8 @@ export default function AuthCard(props: iAuthCard) {
                         </div>
                         <div style={{ height: "25px", display: 'flex', position: "relative", alignItems: "center" }}>
                             {errors.password && handleFormValidation("Password", errors.password.type)}
+                            {formFieldErrors.password && handleFormValidation(formFieldErrors.password, "backend")}
+
 
                             {
                                 <a style={{ position: "absolute", right: "0", color: "dimgray", fontSize: "12px" }} href="forgot-password"> forgot password? </a>
@@ -193,12 +208,23 @@ export default function AuthCard(props: iAuthCard) {
                         </div>
                     </div>
 
-                    <input
-                        name="submit"
-                        className="submit-button"
-                        type="submit"
-                        value="Login"
-                    />
+                    {
+                        isLoading
+                            ?
+                            <div className="disabled-submit-button spinner">
+                                <Spinner size="sm" animation="border" color="#f8f4e3" />
+                            </div>
+                            :
+
+                            <input
+                                name="submit"
+                                className="submit-button"
+                                type="submit"
+                                value="Login"
+                            />
+                    }
+
+
                 </form>
                 <div style={{ textAlign: "center", color: "dimgray", fontSize: "12px" }}>
                     <span> or <a href="signup" style={{ color: "dimgray" }}> create an account </a> </span>
