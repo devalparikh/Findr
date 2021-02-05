@@ -1,7 +1,6 @@
 // @ts-nocheck
 
 import React, { useState } from 'react'
-import basketballImage from '../../../images/basketball.jpeg';
 import ImageGallery from '../../imageGallery/ImageGallery'
 
 import StarRatings from 'react-star-ratings';

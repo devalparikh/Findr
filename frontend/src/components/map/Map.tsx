@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useState } from 'react';
 import ReactMapGL from 'react-map-gl';
 
 function MapBox() {
@@ -10,9 +9,10 @@ function MapBox() {
             zoom: 8
         }
     });
-
+    
     const ref = React.useRef();
-
+    
+    /* eslint-disable */
     React.useEffect(() => {
         if (ref.current) {
             setState({
@@ -27,6 +27,7 @@ function MapBox() {
             });
         }
     }, []);
+    /* eslint-enable */
 
     return (
         // @ts-ignore

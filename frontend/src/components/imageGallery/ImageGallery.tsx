@@ -31,8 +31,9 @@ export default function ImageGallery(props:iImageGallery) {
           {/* TODO: Add ind as image number to carousel */}
         {props.images.map((img:any, ind: number) => {
            return (
-            <Carousel.Item>
+            <Carousel.Item key={ind}>
                 <img
+                key={ind}
                 className={inner_class}
                 src={img}
                 alt="First slide"
