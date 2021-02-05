@@ -1,5 +1,6 @@
 import React from 'react'
 import './CreatePost.css';
+import { handleFormValidation } from '../../form/formValidator';
 
 import { useForm, SubmitHandler } from "react-hook-form";
 
@@ -16,19 +17,6 @@ export default function CreatePost() {
 
     const createPostAPICall: SubmitHandler<Inputs> = data => {
         console.log(data);
-    }
-
-    // TODO: Make this into a react hook
-    const handleFormValidation = (input_name: string, error_type: string) => {
-        switch (error_type) {
-            case "maxLength":
-                return (<p className="error-text">{input_name} character length exceeded</p>)
-            case "required":
-                return (<p className="error-text">{input_name} is required</p>)
-            default:
-                break;
-        }
-
     }
 
     const descriptionCharacterLimit = 15;
