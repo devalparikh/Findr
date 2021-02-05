@@ -16,10 +16,10 @@ router.post(
       .trim()
       .notEmpty()
       .withMessage('Username must be valid')
-      .custom(async (value, { req }) => {
-        const existingUser = await User.findOne({ 'username': value });
+      .custom(async (username_value, { req }) => {
+        const existingUser = await User.findOne({ 'username': username_value });
         if (!existingUser) {
-          return Promise.reject("Username already exists")
+          return Promise.reject(`Username "${username_value}" does not exist`)
         } else {
           req.body.existingUser = existingUser;
           return;
@@ -28,33 +28,20 @@ router.post(
     body('password')
       .trim()
       .notEmpty()
-      .withMessage('You must supply a password')
-      .custom(async (value, { req }) => {
-        console.log(req.body.existingUser.password)
-        console.log(value)
-        const passwordsMatch = await Password.compare(
-          req.body.existingUser.password,
-          value
-        );
-        if (!passwordsMatch) return Promise.reject("Invalid Credentials")
+      .withMessage('Password is required')
+      .custom(async (password_value, { req }) => {
+        if (req.body.existingUser) {
+          const passwordsMatch = await Password.compare(
+            req.body.existingUser.password, // Encrypted password from db
+            password_value // Inputted password
+          );
+          if (!passwordsMatch) return Promise.reject("Invalid Password")
+        }
       }),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
     const { username, password } = req.body;
-
-    // const existingUser = await User.findOne({ username });
-    // if (!existingUser) {
-    //   throw new BadRequestError(`${username} does not exist`);
-    // }
-
-    // const passwordsMatch = await Password.compare(
-    //   existingUser.password,
-    //   password
-    // );
-    // if (!passwordsMatch) {
-    //   throw new BadRequestError('Invalid Credentials');
-    // }
 
     const existingUser = req.body.existingUser;
 
