@@ -14,7 +14,7 @@ export const useFetch = () => {
         withCredentials?: boolean
     }
 
-    const fetchAPI: any = useCallback(async ({ method, url, data = null, config = null, withCredentials = false }: IFetchAPI) => {
+    const fetchAPI: any = async ({ method, url, data = null, config = null, withCredentials = false }: IFetchAPI) => {
 
         url = process.env.NODE_ENV === 'production' ? url : `http://localhost:8000/${url}`;
 
@@ -48,7 +48,7 @@ export const useFetch = () => {
             setIsLoading(false);
         }
 
-    }, [setIsLoading, setAPIResult]);
+    };
 
     return [isLoading, APIresult, APIerror, fetchAPI];
 };

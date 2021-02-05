@@ -30,22 +30,21 @@ function Main() {
   const location = useLocation();
   const [screenSize, SetScreenSize] = useState(window.innerWidth);
   const breakpoint = 790;
-  
+
   //NOTE: cookies cannt be access with httponly: true
   // const cookies = new Cookies();
   // console.log("universal cookie\n" + cookies.get("express:sess"))
 
   const [isLoading, APIresult, APIerror, fetchAPI] = useFetch();
-  useEffect(()=>{
-    if(!APIresult && !APIerror){
-      fetchAPI({
-                method: 'get',
-                url: 'api/users/currentuser',
-                withCredentials: true
-            });
-    }
-  })
-  
+
+  useEffect(() => {
+    fetchAPI({
+      method: 'get',
+      url: 'api/users/currentuser',
+      withCredentials: true
+    });
+  }, []);
+
 
 
   useEffect(() => {
@@ -77,13 +76,13 @@ function Main() {
 
         <Route exact path="/login">
           <div className="login-container">
-            <Login/>
+            <Login />
           </div>
         </Route>
 
         <Route exact path="/signup">
           <div className="signup-container">
-            <Signup/>
+            <Signup />
           </div>
         </Route>
 
@@ -126,7 +125,7 @@ function Main() {
               </Route>
 
               <Route exact path="/createpost">
-                <CreatePost/>
+                <CreatePost />
               </Route>
 
             </Switch>
@@ -137,7 +136,7 @@ function Main() {
 
         {/* Map (right side) */}
         {
-          location.pathname !== '/home' && location.pathname !== '/signup' &&  location.pathname !== '/login' && location.pathname !== '/' && screenSize > breakpoint &&
+          location.pathname !== '/home' && location.pathname !== '/signup' && location.pathname !== '/login' && location.pathname !== '/' && screenSize > breakpoint &&
 
           <div className="main-map-container">
             <MapBox />
