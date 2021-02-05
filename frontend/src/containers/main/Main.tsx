@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../../components/navbar/Navbar';
-import CategoryCard from '../../components/cards/categoryCard/CategoryCard';
-import PostCard from '../../components/cards/postCard/PostCard';
 import MapBox from '../../components/map/Map';
 import Home from '../../components/home/Home';
 
 import basketballImage from '../../images/basketball.jpeg';
-import postCardHolder from '../../images/postcard-placeholder.jpg';
 import Explore from '../../components/menu/explore/Explore';
 import CategoryResult from '../../components/menu/categoryResult/CategoryResult';
 import SubCategoryResult from '../../components/menu/subcategoryResult/SubCategoryResult';
 import ViewPost from '../../components/menu/viewPost/ViewPost';
+
 
 import {
   Switch,
@@ -20,6 +18,7 @@ import {
 import CreatePost from '../../components/menu/createPost/CreatePost';
 import Login from '../../components/auth/Login';
 import Signup from '../../components/auth/Signup';
+import { useFetch } from '../../services/useFetch';
 
 
 //////////////////////
@@ -29,9 +28,25 @@ import Signup from '../../components/auth/Signup';
 function Main() {
 
   const location = useLocation();
-
   const [screenSize, SetScreenSize] = useState(window.innerWidth);
   const breakpoint = 790;
+  
+  //NOTE: cookies cannt be access with httponly: true
+  // const cookies = new Cookies();
+  // console.log("universal cookie\n" + cookies.get("express:sess"))
+
+  const [isLoading, APIresult, APIerror, fetchAPI] = useFetch();
+  useEffect(()=>{
+    if(!APIresult && !APIerror){
+      fetchAPI({
+                method: 'get',
+                url: 'api/users/currentuser',
+                withCredentials: true
+            });
+    }
+  })
+  
+
 
   useEffect(() => {
     const handleWindowResize = () => SetScreenSize(window.innerWidth);

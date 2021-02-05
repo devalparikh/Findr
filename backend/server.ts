@@ -25,7 +25,8 @@ const app = express();
 app.use(
     cookieSession({
         signed: false,
-        secure: process.env.NODE_ENV === 'production' ? true : false
+        secure: process.env.NODE_ENV === 'production' ? true : false,
+        // httpOnly: false
     })
 );
 

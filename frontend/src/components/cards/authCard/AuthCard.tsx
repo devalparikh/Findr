@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, SubmitHandler } from "react-hook-form";
 import lockIcon from "../../../images/padlock.svg"
-import confirmLock from "../../../images/confirmLock.svg"
+import confirmLockIcon from "../../../images/confirmLock.svg"
 import userIcon from "../../../images/user.svg"
 import emailIcon from "../../../images/mail.svg"
-import { useFetch } from "../../../useFetch"
+import { useFetch } from "../../../services/useFetch"
 import './AuthCard.css';
 import { Spinner } from 'react-bootstrap';
 import { handleFormValidation } from '../../form/formValidator';
-import { url } from 'inspector';
 
 interface Inputs {
     username: string,
@@ -29,16 +28,14 @@ export default function AuthCard(props: iAuthCard) {
     const [formFieldErrors, setFormFieldErrors] = useState({ password: "", username: "", email: "" })
 
     const [isLoading, APIresult, APIerror, fetchAPI] = useFetch();
-    console.log(APIerror);
 
     const { register, handleSubmit, watch, errors } = useForm();
-    const watchAllFields = watch();
 
     useEffect(() => {
         // Update form errors
         if (APIerror && APIerror.data.errors) {
             APIerror.data.errors.map((errObj: errObj) => {
-                setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
+                return setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
             });
         }
     }, [APIerror])
@@ -74,7 +71,7 @@ export default function AuthCard(props: iAuthCard) {
                 <form onSubmit={handleSubmit(signupAPICall)}>
                     <div className="input-container">
                         <div className="icon-input">
-                            <img className="" src={emailIcon} />
+                            <img className="" src={emailIcon} alt="emailIcon"/>
                             <input
                                 name="email"
                                 className="input user-post-name"
@@ -90,7 +87,7 @@ export default function AuthCard(props: iAuthCard) {
 
                     <div className="input-container">
                         <div className="icon-input">
-                            <img src={userIcon} />
+                            <img src={userIcon} alt="userIcon"/>
                             <input
                                 name="username"
                                 type="username"
@@ -105,7 +102,7 @@ export default function AuthCard(props: iAuthCard) {
 
                     <div className="input-container">
                         <div className="icon-input">
-                            <img src={lockIcon} style={{ width: "16px" }} />
+                            <img src={lockIcon} style={{ width: "16px" }} alt="lockIcon"/>
                             <input
                                 type="password"
                                 name="password"
@@ -124,7 +121,7 @@ export default function AuthCard(props: iAuthCard) {
 
                     <div className="input-container">
                         <div className="icon-input">
-                            <img className="login-input-icon" src={confirmLock} style={{ width: "16px" }} />
+                            <img className="login-input-icon" src={confirmLockIcon} style={{ width: "16px" }} alt="confirmLockIcon"/>
                             <input
                                 type="password"
                                 name="confirmPassword"
@@ -174,7 +171,7 @@ export default function AuthCard(props: iAuthCard) {
                 <form onSubmit={handleSubmit(loginAPICall)}>
                     <div className="input-container">
                         <div className="icon-input">
-                            <img src={userIcon} />
+                            <img src={userIcon} alt="userIcon"/>
                             <input
                                 name="username"
                                 className="input user-post-name"
@@ -188,7 +185,7 @@ export default function AuthCard(props: iAuthCard) {
                     </div>
                     <div className="input-container">
                         <div className="icon-input">
-                            <img className="login-input-icon" src={lockIcon} style={{ width: "16px" }} />
+                            <img className="login-input-icon" src={lockIcon} style={{ width: "16px" }} alt="lockIcon"/>
                             <input
                                 type="password"
                                 name="password"

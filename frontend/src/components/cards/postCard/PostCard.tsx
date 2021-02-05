@@ -41,7 +41,7 @@ function PostCard(props: iPostCard) {
                 <div className="postcard-title"> {props.title} </div>
                 <div className="postcard-location"> {props.location} </div>
                 <div className="postcard-review">
-                    <img className="postcard-star" src={star} /> 
+                    <img className="postcard-star" src={star} alt="star"/> 
                     <div className="postcard-review-number">{props.review}</div>
                     <span className="postcard-review-count"> ({props.reviewCount} reviews) </span>
                 </div>
