@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { handleFormValidation } from '../../form/formValidator';
 import { useForm, SubmitHandler } from "react-hook-form";
-import ImageUploader from "react-images-upload";
+import ImageUploader from "./imageUploader/ImageUploader";
+
 import './CreatePost.css';
-import ImageGallery from '../../imageGallery/ImageGallery';
 
 interface Inputs {
     name: string,
@@ -13,7 +13,7 @@ interface Inputs {
 
 export default function CreatePost() {
     const { register, handleSubmit, watch, errors } = useForm();
-    const [uploadedPictures, setUploadedPictures] = useState([] as Array<File>);
+    const [uploadedPictures, setUploadedPictures] = useState([] as Array<Array<File>>);
     const watchAllFields = watch();
 
 
@@ -21,13 +21,39 @@ export default function CreatePost() {
         console.log(data);
     }
 
-    const onDrop = (picture: Array<File>) => {
-        console.log((picture))
-        setUploadedPictures([...uploadedPictures, picture] as Array<File>);
+
+
+    const dragOver = (e: any) => {
+        e.preventDefault();
+    }
+
+    const dragEnter = (e: any) => {
+        e.preventDefault();
+    }
+
+    const dragLeave = (e: any) => {
+        e.preventDefault();
+    }
+
+    const fileDrop = (e: any) => {
+        e.preventDefault();
+        const files = e.dataTransfer.files;
+        let filesArr = Object.keys(files).map((key) => files[key]);
+        if (uploadedPictures.length > 0) {
+            let newUploadedPictures = uploadedPictures;
+            newUploadedPictures[newUploadedPictures.length - 1] = newUploadedPictures[newUploadedPictures.length - 1].concat(filesArr);
+            console.log(newUploadedPictures)
+            setUploadedPictures(newUploadedPictures as Array<Array<File>>);
+        }
+
+    }
+
+    const onDrop = (pictures: Array<File>) => {
+        setUploadedPictures([...uploadedPictures, pictures] as Array<Array<File>>);
     };
 
     const MAX_DESCRIPITON_CHARACTER_LIMIT = 15;
-    const MAX_IMAGE_COUNT = 5;
+    const MAX_IMAGES_COUNT = 5;
     const MAX_IMAGE_SIZE = 5242880;
 
 
@@ -77,30 +103,9 @@ export default function CreatePost() {
                                 <p className="form-info">
                                     Characters remaining: {MAX_DESCRIPITON_CHARACTER_LIMIT}
                                 </p>
-
                         }
                     </div>
                 </div>
-
-                <div className="input-container">
-                    <ImageUploader
-                        withIcon={true}
-                        buttonText={uploadedPictures.length > 0 ? 'Add more images' : 'Choose images' }
-                        label="Upload Images"
-                        labelStyles={{ textAlign: 'center', color: 'dimgray' }}
-                        buttonStyles={{ backgroundColor: "#f8f4e3", color: "black" }}
-                        fileContainerStyle={{ backgroundColor: "rgba(255, 255, 255, 0.664)" }}
-                        onChange={onDrop}
-                        imgExtension={['.jpg', '.png', '.gif']}
-                        maxFileSize={5242880}
-                        withPreview={true}
-                    />
-                    <p className="form-info">
-                        Max file size: 5mb <br />
-                        Accepts: .jpg, .png, .gif
-                    </p>
-                </div>
-
 
                 <div className="input-container">
                     <input
@@ -110,6 +115,30 @@ export default function CreatePost() {
                         disabled={true}
                         ref={register}
                     />
+                </div>
+
+                <div className="input-container">
+                    <ImageUploader
+                        withIcon={true}
+                        buttonText={uploadedPictures[uploadedPictures.length - 1] && uploadedPictures[uploadedPictures.length - 1].length > 0 ? 'Add more images' : 'Choose images'}
+                        label="Upload Images"
+                        labelStyles={{ textAlign: 'center', color: 'dimgray' }}
+                        fileContainerStyle={{ backgroundColor: "rgba(255, 255, 255, 0.664)" }}
+                        onChange={onDrop}
+                        imgExtension={['.jpg', '.png', '.gif']}
+                        maxFileSize={MAX_IMAGE_SIZE}
+                        maxFileCount={MAX_IMAGES_COUNT}
+                        withPreview={true}
+                        dragLabel="or drag & drop images"
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <p className="form-info">
+                            Max file size: 5mb <br />
+                        </p>
+                        <p className="form-info">
+                            Accepts: .jpg, .png, .gif
+                        </p>
+                    </div>
                 </div>
 
 
