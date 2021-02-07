@@ -125,7 +125,7 @@ export default function CreatePost() {
                         labelStyles={{ textAlign: 'center', color: 'dimgray' }}
                         fileContainerStyle={{ backgroundColor: "rgba(255, 255, 255, 0.664)" }}
                         onChange={onDrop}
-                        imgExtension={['.jpg', '.png', '.gif']}
+                        imgExtension={['.jpg', '.png', '.jpeg', '.gif']}
                         maxFileSize={MAX_IMAGE_SIZE}
                         maxFileCount={MAX_IMAGES_COUNT}
                         withPreview={true}
@@ -136,7 +136,7 @@ export default function CreatePost() {
                             Max file size: 5mb <br />
                         </p>
                         <p className="form-info">
-                            Accepts: .jpg, .png, .gif
+                            Accepts: .jpg, .jpeg, .png, .gif
                         </p>
                     </div>
                 </div>
