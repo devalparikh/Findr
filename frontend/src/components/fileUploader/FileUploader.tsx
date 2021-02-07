@@ -1,8 +1,8 @@
 // @ts-nocheck
 import React from 'react';
 import PropTypes from 'prop-types';
-import UploadIcon from '../../../../images/UploadIcon.svg';
-import './ImageUploader.css';
+import UploadIcon from '../../images/UploadIcon.svg';
+import './FileUploader.css';
 
 const styles = {
     display: "flex",
@@ -47,7 +47,7 @@ interface Props {
     defaultImages?: string[]
 }
 
-class ReactImageUploadComponent extends React.Component<Props>  {
+class FileUploader extends React.Component<Props>  {
     constructor(props) {
         super(props);
         this.state = {
@@ -99,7 +99,7 @@ class ReactImageUploadComponent extends React.Component<Props>  {
                 name: file.name,
             };
 
-            // Check if max image count will be exceeded
+            // Check if max file count will be exceeded
             if (this.props.maxFileCount && this.state.pictures.length + (i + 1) > this.props.maxFileCount) {
                 fileError = Object.assign(fileError, {
                     type: ERROR.MAXIMUM_FILES_REACHED
@@ -335,7 +335,7 @@ class ReactImageUploadComponent extends React.Component<Props>  {
     }
 }
 
-ReactImageUploadComponent.defaultProps = {
+FileUploader.defaultProps = {
     className: '',
     fileContainerStyle: {},
     buttonClassName: "",
@@ -363,7 +363,7 @@ ReactImageUploadComponent.defaultProps = {
     defaultImages: []
 };
 
-ReactImageUploadComponent.propTypes = {
+FileUploader.propTypes = {
     style: PropTypes.object,
     fileContainerStyle: PropTypes.object,
     className: PropTypes.string,
@@ -391,4 +391,4 @@ ReactImageUploadComponent.propTypes = {
     defaultImages: PropTypes.array
 };
 
-export default ReactImageUploadComponent;
+export default FileUploader;

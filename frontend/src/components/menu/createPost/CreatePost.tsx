@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { handleFormValidation } from '../../form/formValidator';
 import { useForm, SubmitHandler } from "react-hook-form";
-import ImageUploader from "./imageUploader/ImageUploader";
+import ImageUploader from "../../fileUploader/FileUploader";
 
 import './CreatePost.css';
 
@@ -10,6 +10,10 @@ interface Inputs {
     description: string,
     location?: string
 }
+
+const MAX_DESCRIPITON_CHARACTER_LIMIT = 15;
+const MAX_IMAGES_COUNT = 5;
+const MAX_IMAGE_SIZE = 5242880;
 
 export default function CreatePost() {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -21,40 +25,9 @@ export default function CreatePost() {
         console.log(data);
     }
 
-
-
-    const dragOver = (e: any) => {
-        e.preventDefault();
-    }
-
-    const dragEnter = (e: any) => {
-        e.preventDefault();
-    }
-
-    const dragLeave = (e: any) => {
-        e.preventDefault();
-    }
-
-    const fileDrop = (e: any) => {
-        e.preventDefault();
-        const files = e.dataTransfer.files;
-        let filesArr = Object.keys(files).map((key) => files[key]);
-        if (uploadedPictures.length > 0) {
-            let newUploadedPictures = uploadedPictures;
-            newUploadedPictures[newUploadedPictures.length - 1] = newUploadedPictures[newUploadedPictures.length - 1].concat(filesArr);
-            console.log(newUploadedPictures)
-            setUploadedPictures(newUploadedPictures as Array<Array<File>>);
-        }
-
-    }
-
     const onDrop = (pictures: Array<File>) => {
         setUploadedPictures([...uploadedPictures, pictures] as Array<Array<File>>);
     };
-
-    const MAX_DESCRIPITON_CHARACTER_LIMIT = 15;
-    const MAX_IMAGES_COUNT = 5;
-    const MAX_IMAGE_SIZE = 5242880;
 
 
     return (
