@@ -37,7 +37,7 @@ export default function ViewPost(props: iViewPost) {
                         changeRating={SetRating}
                         numberOfStars={5}
                         name='rating'
-                        starDimension="25px"
+                        starDimension="23px"
                         starSpacing="1px"
                         starHoverColor='#f59873'
                         starRatedColor='#FF6629'

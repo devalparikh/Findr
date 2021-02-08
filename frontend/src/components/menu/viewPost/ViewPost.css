@@ -8,22 +8,23 @@
 }
 
 .viewpost-location-name {
+  font-size: 35px;
   margin-top: 10px;
   font-weight: 800;
 }
 
 .viewpost-location-address {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 
 .viewpost-category {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 
 .viewpost-subcategory {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -39,7 +40,7 @@
   align-items: center;
   display: flex;
   margin: 0px 0px 0px 5px;
-  font-size: 18px;
+  font-size: 15px;
   color: dimgrey;
 }
 
