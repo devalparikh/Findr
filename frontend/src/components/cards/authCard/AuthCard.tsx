@@ -37,13 +37,16 @@ export default function AuthCard(props: iAuthCard) {
     useEffect(() => {
         // Update form errors
         if (APIerror && APIerror.data.errors) {
-            console.log("we are inside error")
             APIerror.data.errors.map((errObj: errObj) => {
                 return setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
             });
         }
-        
-    }, [APIerror])
+
+        if (APIresult) {
+            history.push(`/home`);
+        }
+
+    }, [APIerror, APIresult])
 
     const loginAPICall: SubmitHandler<Inputs> = async form_data => {
         setFormFieldErrors({ password: "", username: "", email: "" });
@@ -53,11 +56,7 @@ export default function AuthCard(props: iAuthCard) {
             url: 'api/users/signin',
             data: form_data,
             withCredentials: true
-        });
-
-        if (formFieldErrors.username === "" && formFieldErrors.password === "") {
-            history.push(`/home`);
-        }
+        }); 
     }
 
     const signupAPICall: SubmitHandler<Inputs> = async form_data => {
