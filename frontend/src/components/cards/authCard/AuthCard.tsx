@@ -28,7 +28,7 @@ interface errObj {
 export default function AuthCard(props: iAuthCard) {
     const [formFieldErrors, setFormFieldErrors] = useState({ password: "", username: "", email: "" })
 
-    const [isLoading, APIresult, APIerror, fetchAPI] = useFetch();
+    const [isLoading, APIresult, APIerror, fetchAPI, APIStatusCode] = useFetch();
 
     const { register, handleSubmit, watch, errors } = useForm();
 
@@ -42,11 +42,11 @@ export default function AuthCard(props: iAuthCard) {
             });
         }
 
-        if (APIresult) {
+        if (APIStatusCode === 200) {
             history.push(`/home`);
         }
 
-    }, [APIerror, APIresult])
+    }, [APIerror, APIStatusCode])
 
     const loginAPICall: SubmitHandler<Inputs> = async form_data => {
         setFormFieldErrors({ password: "", username: "", email: "" });
