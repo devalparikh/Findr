@@ -8,6 +8,7 @@ import { useFetch } from "../../../services/useFetch"
 import './AuthCard.css';
 import { Spinner } from 'react-bootstrap';
 import { handleFormValidation } from '../../form/formValidator';
+import { Router, useHistory } from 'react-router';
 
 interface Inputs {
     username: string,
@@ -31,6 +32,8 @@ export default function AuthCard(props: iAuthCard) {
 
     const { register, handleSubmit, watch, errors } = useForm();
 
+    const history = useHistory();
+
     useEffect(() => {
         // Update form errors
         if (APIerror && APIerror.data.errors) {
@@ -38,7 +41,12 @@ export default function AuthCard(props: iAuthCard) {
                 return setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
             });
         }
-    }, [APIerror])
+
+        if (APIresult) {
+            history.push(`/home`);
+        }
+
+    }, [APIerror, APIresult])
 
     const loginAPICall: SubmitHandler<Inputs> = async form_data => {
         setFormFieldErrors({ password: "", username: "", email: "" });
@@ -48,8 +56,7 @@ export default function AuthCard(props: iAuthCard) {
             url: 'api/users/signin',
             data: form_data,
             withCredentials: true
-        });
-
+        }); 
     }
 
     const signupAPICall: SubmitHandler<Inputs> = async form_data => {
@@ -62,7 +69,6 @@ export default function AuthCard(props: iAuthCard) {
             withCredentials: true
         });
     }
-
 
     function renderSignUp() {
         return (
