@@ -8,6 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 function Navbar() {
 
+  const MAX_SCREEN_WIDTH = 950;
 
   const [open, setOpen] = useState(false);
   const [screenSize, SetScreenSize] = useState(window.innerWidth);
@@ -24,7 +25,7 @@ function Navbar() {
 
 
   const handleNavLinkPress = () => {
-    if (screenSize < 791) {
+    if (screenSize < MAX_SCREEN_WIDTH) {
       setOpen(false);
       document.getElementsByClassName('Navbar')[0].classList.toggle('active');
       document.getElementsByClassName('ham')[0].classList.toggle('active');
@@ -42,7 +43,7 @@ function Navbar() {
     <div className={navBarClass}>
 
       <div className="navBarContainer">
-        <span className="logo" onClick={() => history.push('/') }> Findr </span>
+        <span className="logo" onClick={() => {history.push('/'); if (open) handleNavLinkPress(); } }> Findr </span>
         <HamburgerButton open={open} setOpen={(isOpen: boolean): void => { setOpen(isOpen) }} />
       </div>
 
