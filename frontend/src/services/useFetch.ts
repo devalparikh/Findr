@@ -3,8 +3,10 @@ import axios from "axios";
 
 export const useFetch = () => {
     const [APIresult, setAPIResult] = useState();
+    const [APIStatusCode, SetAPIStatusCode] = useState(500);
     const [APIerror, setAPIError] = useState();
     const [isLoading, setIsLoading] = useState(false);
+
 
     interface IFetchAPI {
         method: string,
@@ -36,9 +38,11 @@ export const useFetch = () => {
             axios(options)
                 .then(res => {
                     setAPIResult(res.data);
+                    SetAPIStatusCode(res.status || 500);
                 })
                 .catch(err => {
                     setAPIError(err.response);
+                    SetAPIStatusCode(err.response.status || 500);
                 })
                 .finally(() => {
                     setIsLoading(false);
@@ -50,5 +54,5 @@ export const useFetch = () => {
 
     };
 
-    return [isLoading, APIresult, APIerror, fetchAPI];
+    return [isLoading, APIresult, APIerror, fetchAPI, APIStatusCode];
 };
