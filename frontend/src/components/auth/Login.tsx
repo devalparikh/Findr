@@ -5,7 +5,6 @@ import './Auth.css'
 // email or username
 // password
 
-
 export default function Login() {
     return (
         <AuthCard type={"login"}/>
