@@ -123,9 +123,6 @@ html {
   }
 }
 
-
-
-
 /* Special Fonts */
 .h1-findr-title {
   font-weight: 800;
@@ -142,9 +139,6 @@ html {
   margin-left: 5px;
 }
 /* End of Special Fonts */
-
-
-
 
 /* Button Styles */
 .submit-button {
@@ -187,10 +181,6 @@ html {
 
 /* End of Button Styles */
 
-
-
-
-
 /* Input Styles */
 .input {
   width: 100%;
@@ -213,7 +203,7 @@ html {
 }
 .icon-input input {
   position: absolute;
-  padding-left: 38px!important;
+  padding-left: 38px !important;
 }
 .icon-input img {
   position: absolute;
@@ -227,10 +217,6 @@ html {
   margin-bottom: 20px;
 }
 /* End of Input Styles */
-
-
-
-
 
 /* Spinner Styles */
 .spinner {
