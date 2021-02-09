@@ -35,7 +35,7 @@ function CategoryResult() {
 
                 <div className="category-result-header">
                     <div className="category-result-title-group">
-                        <div className="category-result-title">Basketball</div>
+                        <div className="menu-subtitle-text">Basketball</div>
                         <div className="category-result-follow">Follow</div>
                     </div>
                     <div className="category-result-follow" onClick={() => history.push('/category-result/sports/subcategory-result/basketball')}>View All</div>
@@ -54,7 +54,7 @@ function CategoryResult() {
                     <PostCard title="Test" location="Location" review={5.0} reviewCount={69} images={tempArray} />
                     <div> &nbsp; </div>            </div>            <div className="category-result-header">
                     <div className="category-result-title-group">
-                        <div className="category-result-title">Football</div>
+                        <div className="menu-subtitle-text">Football</div>
                         <div className="category-result-follow">Follow</div>
                     </div>
                     <div className="category-result-follow">View All</div>
@@ -76,7 +76,7 @@ function CategoryResult() {
 
                 <div className="category-result-header">
                     <div className="category-result-title-group">
-                        <div className="category-result-title">Football</div>
+                        <div className="menu-subtitle-text">Football</div>
                         <div className="category-result-follow">Follow</div>
                     </div>
                     <div className="category-result-follow">View All</div>

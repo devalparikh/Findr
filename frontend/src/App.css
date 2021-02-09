@@ -81,7 +81,7 @@ html {
   }
 }
 
-@media (max-width:950px) {
+@media (max-width: 950px) {
   .App {
     /* Not using vh to allow app to scroll */
     /* Take up full size */
@@ -128,6 +128,17 @@ html {
   font-weight: 800;
   margin: 30px;
   text-align: center;
+}
+
+.homepage-subtitle-text {
+  font-size: 30px;
+  font-weight: 700;
+  margin: 15px 0px 10px 0px;
+}
+
+.menu-subtitle-text {
+  font-weight: 800;
+  font-size: 25px;
 }
 
 .error-text {
