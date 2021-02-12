@@ -104,7 +104,11 @@ html {
   }
 
   .login-container {
-    height: calc(100vh - 75px);
+    height: calc(200vh - 75px);
+  }
+
+  .signup-container{
+    height: calc(200vh - 75px);
   }
 
   .main-menu-container {
@@ -120,6 +124,16 @@ html {
   }
   .main-map-container {
     display: none;
+  }
+}
+
+@media (max-width: 790px){
+  .login-container {
+    height: calc(100vh - 75px);
+  }
+
+  .signup-container{
+    height: calc(100vh - 75px);
   }
 }
 
