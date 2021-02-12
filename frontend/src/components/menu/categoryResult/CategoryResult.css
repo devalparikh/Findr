@@ -16,11 +16,6 @@
   flex-direction: row;
 }
 
-.category-result-title {
-  font-weight: 800;
-  font-size: 25px;
-}
-
 .category-result-follow {
   height: inherit;
   display: flex;
