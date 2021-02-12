@@ -159,7 +159,7 @@
   stroke-dashoffset: -64px;
 }
 
-@media (max-width: 790px) {
+@media (max-width: 950px) {
   .hamburgerContainer {
     display: inline;
   }
