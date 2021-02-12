@@ -92,6 +92,10 @@
     width: 100%;
 }
 
+.fileContainer .uploadPicturesWrapperScroll {
+    overflow-y: auto;
+}
+
 .fileContainer .uploadPictureContainer {
     transition: 0.3s;
     width: 50%;

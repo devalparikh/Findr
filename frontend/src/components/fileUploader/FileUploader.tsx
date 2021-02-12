@@ -25,6 +25,7 @@ interface Props {
     buttonClassName?: string
     buttonStyles?: object
     withPreview?: boolean
+    previewMaxHeight?: number
     accept?: string
     name?: string
     withIcon?: boolean
@@ -239,8 +240,12 @@ class FileUploader extends React.Component<Props>  {
      Render preview images
      */
     renderPreview() {
+        let previewClass = "";
+        if(this.props.previewMaxHeight) {
+            previewClass = "uploadPicturesWrapperScroll";
+        }
         return (
-            <div className="uploadPicturesWrapper">
+            <div className={"uploadPicturesWrapper " + previewClass} style={{ maxHeight: this.props.previewMaxHeight }}>
                 {/* <FlipMove enterAnimation="fade" leaveAnimation="fade" style={styles}> */}
                 {this.renderPreviewPictures()}
                 {/* </FlipMove> */}
@@ -373,6 +378,7 @@ FileUploader.propTypes = {
     buttonStyles: PropTypes.object,
     buttonType: PropTypes.string,
     withPreview: PropTypes.bool,
+    previewMaxHeight: PropTypes.number,
     accept: PropTypes.string,
     name: PropTypes.string,
     withIcon: PropTypes.bool,

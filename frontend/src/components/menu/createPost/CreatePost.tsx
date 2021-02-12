@@ -31,7 +31,7 @@ export default function CreatePost() {
 
 
     return (
-        <div className="create-post-container">
+        <div className="create-post-container" style={{ marginBottom: "40px" }}>
             <h1 className="h1-findr-title">Share a new (location/activity)</h1>
 
 
@@ -103,6 +103,7 @@ export default function CreatePost() {
                         maxFileCount={MAX_IMAGES_COUNT}
                         withPreview={true}
                         dragLabel="or drag & drop images"
+                        previewMaxHeight={500}
                     />
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <p className="form-info">
@@ -119,6 +120,7 @@ export default function CreatePost() {
                     name="submit"
                     className="submit-button"
                     type="submit"
+                    style={{ marginBottom: "40px" }}
                 />
 
 
