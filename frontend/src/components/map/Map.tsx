@@ -6,6 +6,7 @@ import { iMarker } from '../../containers/main/Main';
 // @ts-ignore
 import Geocoder from 'react-map-gl-geocoder'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+import './Map.css';
 
 
 interface iMapBox {
