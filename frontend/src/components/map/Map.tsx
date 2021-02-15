@@ -1,9 +1,9 @@
-// @ts-nocheck
 import * as React from 'react';
 import { useState, useRef, useCallback } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
 import Pin from './Pin';
 import { iMarker } from '../../containers/main/Main';
+// @ts-ignore
 import Geocoder from 'react-map-gl-geocoder'
 import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
 
@@ -29,22 +29,18 @@ function MapBox(props: iMapBox) {
     );
 
     // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
-    const handleGeocoderViewportChange = useCallback(
-        (newViewport) => {
-            const geocoderDefaultOverrides = { transitionDuration: 100 };
-            setMarker({
-                longitude: newViewport.longitude,
-                latitude: newViewport.latitude
-            });
-            console.log(newViewport)
-            return handleViewportChange({
-                ...newViewport,
-                ...geocoderDefaultOverrides
-            });
-        },
-        [handleViewportChange]
-    );
+    const handleGeocoderViewportChange = useCallback((newViewport) => {
+        const geocoderDefaultOverrides = { transitionDuration: 1000 };
+        setMarker({
+            longitude: newViewport.longitude,
+            latitude: newViewport.latitude
+        });
 
+        return handleViewportChange({
+            ...newViewport,
+            ...geocoderDefaultOverrides
+        });
+    }, [handleViewportChange]);
 
 
 
@@ -70,14 +66,22 @@ function MapBox(props: iMapBox) {
         });
     }, []);
 
+    // Moves pin to center of current map location
+    const resetPin = () => {
+        setMarker({
+            longitude: viewport.longitude,
+            latitude: viewport.latitude
+        });
+    }
+
 
 
 
     return (
-        // @ts-ignore
         <div style={{ height: "100%", width: "100%" }}>
             {/* @ts-ignore */}
             <ReactMapGL
+                // @ts-ignore
                 ref={ref}
                 {...viewport}
                 width="100%"
@@ -102,13 +106,22 @@ function MapBox(props: iMapBox) {
                         <Pin size={40} />
                     </Marker>
                 }
+
                 <Geocoder
                     mapRef={ref}
                     onViewportChange={handleGeocoderViewportChange}
                     mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_API_KEY}
-                    position="top-left"
+                    position="top-right"
                     marker={false}
                 />
+
+                <button
+                    className="submit-button"
+                    style={{ width: "100px", position: "fixed", bottom: "40px", right: "10px" }}
+                    onClick={resetPin}
+                >
+                    Reset  &nbsp; <Pin size={15} color="white" />
+                </button>
 
             </ReactMapGL>
         </div>

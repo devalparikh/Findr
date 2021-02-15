@@ -32,6 +32,7 @@ export default function CreatePost(props: iCreatePost) {
     useEffect(() => {
         if (marker) {
             const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${marker.longitude},${marker.latitude}.json?&access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`
+            console.log("marker API CALL");
 
             axios.get(url)
                 .then(({ data }) => {
@@ -44,9 +45,9 @@ export default function CreatePost(props: iCreatePost) {
                 });
         }
 
-    }, [marker]);
 
-    console.log(newLocationName);
+
+    }, [marker]);
 
     const descriptionCharacterLimit = 15;
 
