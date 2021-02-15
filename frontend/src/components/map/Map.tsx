@@ -1,11 +1,21 @@
 import * as React from 'react';
-import {useState, useCallback} from 'react';
-import ReactMapGL, { Marker, NavigationControl } from 'react-map-gl';
+import { useState, useCallback } from 'react';
+import ReactMapGL, { Marker } from 'react-map-gl';
 import Pin from './Pin';
+import { iMarker } from '../../containers/main/Main';
 
-function MapBox() {
+interface iMapBox {
+    marker: iMarker;
+    setMarker: (coordinates: any) => void
+}
+
+function MapBox(props: iMapBox) {
+
+    const { marker, setMarker } = props;
+
     const [state, setState] = React.useState({
         viewport: {
+            // Default map coordinates
             latitude: 38.8298,
             longitude: -77.3074,
             zoom: 14
@@ -33,31 +43,30 @@ function MapBox() {
 
 
 
-    // Share new activity marker 
-    const [marker, setMarker] = useState({
-        latitude: 38.8298,
-        longitude: -77.3074
-      });
-      const [events, logEvents] = useState({});
-    
-      const onMarkerDragStart = useCallback(event => {
-        logEvents(_events => ({..._events, onDragStart: event.lngLat}));
-      }, []);
-    
-      const onMarkerDrag = useCallback(event => {
-        logEvents(_events => ({..._events, onDrag: event.lngLat}));
-      }, []);
-    
-      const onMarkerDragEnd = useCallback(event => {
-        logEvents(_events => ({..._events, onDragEnd: event.lngLat}));
+    const [events, logEvents] = useState({});
+
+    const onMarkerDragStart = useCallback(event => {
+        logEvents(_events => ({ ..._events, onDragStart: event.lngLat }));
+    }, []);
+
+    const onMarkerDrag = useCallback(event => {
+        logEvents(_events => ({ ..._events, onDrag: event.lngLat }));
+        // setMarker({
+        //     longitude: event.lngLat[0],
+        //     latitude: event.lngLat[1]
+        // });
+    }, []);
+
+    const onMarkerDragEnd = useCallback(event => {
+        logEvents(_events => ({ ..._events, onDragEnd: event.lngLat }));
         setMarker({
-          longitude: event.lngLat[0],
-          latitude: event.lngLat[1]
+            longitude: event.lngLat[0],
+            latitude: event.lngLat[1]
         });
-      }, []);
+    }, []);
 
 
-      
+
     return (
         // @ts-ignore
         <div ref={ref} style={{ height: "100%", width: "100%" }}>
@@ -80,18 +89,22 @@ function MapBox() {
                 // mapStyle={'mapbox://styles/mapbox/dark-v9'}
                 mapStyle={'mapbox://styles/mapbox/streets-v11'}
             >
-                <Marker
-                    longitude={marker.longitude}
-                    latitude={marker.latitude}
-                    offsetTop={-20}
-                    offsetLeft={-10}
-                    draggable
-                    onDragStart={onMarkerDragStart}
-                    onDrag={onMarkerDrag}
-                    onDragEnd={onMarkerDragEnd}
-                >
-                    <Pin size={25} />
-                </Marker>
+                {
+                    marker &&
+                    <Marker
+                        longitude={marker.longitude}
+                        latitude={marker.latitude}
+                        offsetTop={-20}
+                        offsetLeft={-10}
+                        draggable
+                        onDragStart={onMarkerDragStart}
+                        onDrag={onMarkerDrag}
+                        onDragEnd={onMarkerDragEnd}
+                    >
+                        <Pin size={40}  />
+                    </Marker>
+                }
+
             </ReactMapGL>
         </div>
     );

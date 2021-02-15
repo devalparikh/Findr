@@ -25,6 +25,11 @@ import { useFetch } from '../../services/useFetch';
 //    Playground    //
 //////////////////////
 
+export interface iMarker {
+  latitude: number,
+  longitude: number
+}
+
 function Main() {
 
   const location = useLocation();
@@ -55,6 +60,13 @@ function Main() {
     return () => window.removeEventListener("resize", handleWindowResize);
   }, []);
 
+
+  // CreatePost new activity marker for map
+  const [marker, setMarker] = useState({
+    // Default marker coordinates
+    latitude: 38.8298,
+    longitude: -77.3074
+  });
 
   return (
     <div className="App">
@@ -106,7 +118,7 @@ function Main() {
               </Route>
 
               <Route exact path="/category-result/:category_id/subcategory-result/:subcategory_id">
-                {/* TODO: Pass in sub category data*/}
+                {/* TODO: Pass in sub category data */}
                 <SubCategoryResult categoryName={"Basketball"} />
               </Route>
 
@@ -125,7 +137,7 @@ function Main() {
               </Route>
 
               <Route exact path="/createpost">
-                <CreatePost />
+                <CreatePost marker={marker} />
               </Route>
 
             </Switch>
@@ -139,7 +151,10 @@ function Main() {
           location.pathname !== '/home' && location.pathname !== '/signup' && location.pathname !== '/login' && location.pathname !== '/' && screenSize > breakpoint &&
 
           <div className="main-map-container">
-            <MapBox />
+            <MapBox 
+              marker={marker}
+              setMarker={setMarker}
+            />
           </div>
 
         }

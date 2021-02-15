@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './CreatePost.css';
 import { handleFormValidation } from '../../form/formValidator';
-
 import { useForm, SubmitHandler } from "react-hook-form";
+import { iMarker } from '../../../containers/main/Main';
+import axios from 'axios';
 
 interface Inputs {
     name: string,
@@ -10,7 +11,16 @@ interface Inputs {
     location?: string
 }
 
-export default function CreatePost() {
+interface iCreatePost {
+    marker: iMarker;
+}
+
+export default function CreatePost(props: iCreatePost) {
+    const { marker } = props;
+
+    const [newLocationName, setNewLocationName] = useState("");
+
+
     const { register, handleSubmit, watch, errors } = useForm();
     const watchAllFields = watch();
 
@@ -18,6 +28,25 @@ export default function CreatePost() {
     const createPostAPICall: SubmitHandler<Inputs> = data => {
         console.log(data);
     }
+
+    useEffect(() => {
+        if (marker) {
+            const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${marker.longitude},${marker.latitude}.json?&access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`
+
+            axios.get(url)
+                .then(({ data }) => {
+                    if(data.features && data.features.length > 0 && data.features[0].place_name) {
+                        setNewLocationName(data.features[0].place_name)
+                    }
+                })
+                .catch(err => {
+                    console.log('error with reverse geocoding: ' + err)
+                });
+        }
+
+    }, [marker]);
+
+    console.log(newLocationName);
 
     const descriptionCharacterLimit = 15;
 
@@ -76,7 +105,7 @@ export default function CreatePost() {
                     <input
                         name="location"
                         className="input user-post-location"
-                        placeholder="(disabled) Select a location on the map"
+                        placeholder={`${newLocationName}: ${marker.latitude}, ${marker.longitude}`}
                         disabled={true}
                         ref={register}
                     />
