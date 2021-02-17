@@ -1,8 +1,9 @@
-import React from 'react'
-import './CreatePost.css';
+import React, { useState } from 'react'
 import { handleFormValidation } from '../../form/formValidator';
-
 import { useForm, SubmitHandler } from "react-hook-form";
+import ImageUploader from "../../fileUploader/FileUploader";
+
+import './CreatePost.css';
 
 interface Inputs {
     name: string,
@@ -10,8 +11,13 @@ interface Inputs {
     location?: string
 }
 
+const MAX_DESCRIPITON_CHARACTER_LIMIT = 15;
+const MAX_IMAGES_COUNT = 5;
+const MAX_IMAGE_SIZE = 5242880;
+
 export default function CreatePost() {
     const { register, handleSubmit, watch, errors } = useForm();
+    const [uploadedPictures, setUploadedPictures] = useState([] as Array<Array<File>>);
     const watchAllFields = watch();
 
 
@@ -19,10 +25,13 @@ export default function CreatePost() {
         console.log(data);
     }
 
-    const descriptionCharacterLimit = 15;
+    const onDrop = (pictures: Array<File>) => {
+        setUploadedPictures([...uploadedPictures, pictures] as Array<Array<File>>);
+    };
+
 
     return (
-        <div className="create-post-container">
+        <div className="create-post-container" style={{ marginBottom: "40px" }}>
             <h1 className="h1-findr-title">Share a new (location/activity)</h1>
 
 
@@ -44,7 +53,7 @@ export default function CreatePost() {
                         className="input user-post-description"
                         placeholder="Description (Required)"
                         rows={6}
-                        ref={register({ required: true, maxLength: descriptionCharacterLimit })}
+                        ref={register({ required: true, maxLength: MAX_DESCRIPITON_CHARACTER_LIMIT })}
                     />
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         {errors.description && handleFormValidation("Description", errors.description.type)}
@@ -52,22 +61,21 @@ export default function CreatePost() {
                         {
                             watchAllFields.description
                                 ?
-                                descriptionCharacterLimit - watchAllFields.description.length < 0
+                                MAX_DESCRIPITON_CHARACTER_LIMIT - watchAllFields.description.length < 0
                                     ?
                                     <p className="form-info error-text">
-                                        Characters remaining: {descriptionCharacterLimit - watchAllFields.description.length}
+                                        Characters remaining: {MAX_DESCRIPITON_CHARACTER_LIMIT - watchAllFields.description.length}
                                     </p>
 
                                     :
                                     <p className="form-info">
-                                        Characters remaining: {descriptionCharacterLimit - watchAllFields.description.length}
+                                        Characters remaining: {MAX_DESCRIPITON_CHARACTER_LIMIT - watchAllFields.description.length}
                                     </p>
 
                                 :
                                 <p className="form-info">
-                                    Characters remaining: {descriptionCharacterLimit}
+                                    Characters remaining: {MAX_DESCRIPITON_CHARACTER_LIMIT}
                                 </p>
-
                         }
                     </div>
                 </div>
@@ -82,11 +90,37 @@ export default function CreatePost() {
                     />
                 </div>
 
+                <div className="input-container">
+                    <ImageUploader
+                        withIcon={true}
+                        buttonText={uploadedPictures[uploadedPictures.length - 1] && uploadedPictures[uploadedPictures.length - 1].length > 0 ? 'Add more images' : 'Choose images'}
+                        label="Upload Images"
+                        labelStyles={{ textAlign: 'center', color: 'dimgray' }}
+                        fileContainerStyle={{ backgroundColor: "rgba(255, 255, 255, 0.664)" }}
+                        onChange={onDrop}
+                        imgExtension={['.jpg', '.png', '.jpeg', '.gif']}
+                        maxFileSize={MAX_IMAGE_SIZE}
+                        maxFileCount={MAX_IMAGES_COUNT}
+                        withPreview={true}
+                        dragLabel="or drag & drop images"
+                        previewMaxHeight={500}
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <p className="form-info">
+                            Max file size: 5mb <br />
+                        </p>
+                        <p className="form-info">
+                            Accepts: .jpg, .jpeg, .png, .gif
+                        </p>
+                    </div>
+                </div>
+
 
                 <input
                     name="submit"
                     className="submit-button"
                     type="submit"
+                    style={{ marginBottom: "40px" }}
                 />
 
 
