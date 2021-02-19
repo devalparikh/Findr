@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import './CreatePost.css';
 import { handleFormValidation } from '../../form/formValidator';
 import { useForm, SubmitHandler } from "react-hook-form";
+import ImageUploader from "../../fileUploader/FileUploader";
 import { iMarker } from '../../../containers/main/Main';
 import axios from 'axios';
+import './CreatePost.css';
 
 interface Inputs {
     name: string,
@@ -15,11 +16,15 @@ interface iCreatePost {
     marker: iMarker;
 }
 
+const MAX_DESCRIPITON_CHARACTER_LIMIT = 15;
+const MAX_IMAGES_COUNT = 5;
+const MAX_IMAGE_SIZE = 5242880;
+
 export default function CreatePost(props: iCreatePost) {
     const { marker } = props;
 
     const [newLocationName, setNewLocationName] = useState("");
-
+    const [uploadedPictures, setUploadedPictures] = useState([] as Array<Array<File>>);
 
     const { register, handleSubmit, watch, errors } = useForm();
     const watchAllFields = watch();
@@ -51,8 +56,6 @@ export default function CreatePost(props: iCreatePost) {
         }
     }, [marker]);
 
-    const descriptionCharacterLimit = 15;
-
     return (
         <div className="create-post-container">
             <h1 className="h1-findr-title">Share a new (location/activity)</h1>
@@ -75,7 +78,7 @@ export default function CreatePost(props: iCreatePost) {
                         className="input user-post-description"
                         placeholder="Description (Required)"
                         rows={6}
-                        ref={register({ required: true, maxLength: descriptionCharacterLimit })}
+                        ref={register({ required: true, maxLength: MAX_DESCRIPITON_CHARACTER_LIMIT })}
                     />
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         {errors.description && handleFormValidation("Description", errors.description.type)}
@@ -83,20 +86,20 @@ export default function CreatePost(props: iCreatePost) {
                         {
                             watchAllFields.description
                                 ?
-                                descriptionCharacterLimit - watchAllFields.description.length < 0
+                                MAX_DESCRIPITON_CHARACTER_LIMIT - watchAllFields.description.length < 0
                                     ?
                                     <p className="form-info error-text">
-                                        Characters remaining: {descriptionCharacterLimit - watchAllFields.description.length}
+                                        Characters remaining: {MAX_DESCRIPITON_CHARACTER_LIMIT - watchAllFields.description.length}
                                     </p>
 
                                     :
                                     <p className="form-info">
-                                        Characters remaining: {descriptionCharacterLimit - watchAllFields.description.length}
+                                        Characters remaining: {MAX_DESCRIPITON_CHARACTER_LIMIT - watchAllFields.description.length}
                                     </p>
 
                                 :
                                 <p className="form-info">
-                                    Characters remaining: {descriptionCharacterLimit}
+                                    Characters remaining: {MAX_DESCRIPITON_CHARACTER_LIMIT}
                                 </p>
                         }
                         
