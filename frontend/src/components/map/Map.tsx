@@ -19,6 +19,7 @@ function MapBox(props: iMapBox) {
     const { marker, setMarker } = props;
 
     const [viewport, setViewport] = useState({
+        // Default map area
         latitude: 38.8298,
         longitude: -77.3074,
         zoom: 14
@@ -32,6 +33,8 @@ function MapBox(props: iMapBox) {
     // if you are happy with Geocoder default settings, you can just use handleViewportChange directly
     const handleGeocoderViewportChange = useCallback((newViewport) => {
         const geocoderDefaultOverrides = { transitionDuration: 1000 };
+
+        // Update marker location after searching for a new place on the map
         setMarker({
             longitude: newViewport.longitude,
             latitude: newViewport.latitude
@@ -43,8 +46,6 @@ function MapBox(props: iMapBox) {
         });
     }, [handleViewportChange]);
 
-
-
     const [events, logEvents] = useState({});
 
     const onMarkerDragStart = useCallback(event => {
@@ -53,29 +54,25 @@ function MapBox(props: iMapBox) {
 
     const onMarkerDrag = useCallback(event => {
         logEvents(_events => ({ ..._events, onDrag: event.lngLat }));
-        // setMarker({
-        //     longitude: event.lngLat[0],
-        //     latitude: event.lngLat[1]
-        // });
     }, []);
 
     const onMarkerDragEnd = useCallback(event => {
         logEvents(_events => ({ ..._events, onDragEnd: event.lngLat }));
+        // Update marker location after dragging it
         setMarker({
             longitude: event.lngLat[0],
             latitude: event.lngLat[1]
         });
     }, []);
 
-    // Moves pin to center of current map location
-    const resetPin = () => {
+    // Moves marker to center of current map location
+    const resetMarker = () => {
+        // Move marker to center of current map viewport
         setMarker({
             longitude: viewport.longitude,
             latitude: viewport.latitude
         });
     }
-
-
 
 
     return (
@@ -92,6 +89,7 @@ function MapBox(props: iMapBox) {
                 // mapStyle={'mapbox://styles/mapbox/dark-v9'}
                 mapStyle={'mapbox://styles/mapbox/streets-v11'}
             >
+                
                 {
                     marker &&
                     <Marker
@@ -104,6 +102,7 @@ function MapBox(props: iMapBox) {
                         onDrag={onMarkerDrag}
                         onDragEnd={onMarkerDragEnd}
                     >
+                        {/* Marker renders a pin icon */}
                         <Pin size={40} />
                     </Marker>
                 }
@@ -119,7 +118,7 @@ function MapBox(props: iMapBox) {
                 <button
                     className="submit-button"
                     style={{ width: "100px", position: "fixed", bottom: "40px", right: "10px" }}
-                    onClick={resetPin}
+                    onClick={resetMarker}
                 >
                     Reset  &nbsp; <Pin size={15} color="white" />
                 </button>
