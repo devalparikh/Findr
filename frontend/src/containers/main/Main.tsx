@@ -61,7 +61,8 @@ function Main() {
   }, []);
 
 
-  // CreatePost new activity marker for map
+  // CreatePost new activity marker for map 
+  // - this marker is to select a location to post about
   const [marker, setMarker] = useState({
     // Default marker coordinates
     latitude: 38.8298,

@@ -29,14 +29,19 @@ export default function CreatePost(props: iCreatePost) {
         console.log(data);
     }
 
+    // Everytime marker updates
     useEffect(() => {
+        // Reverse Geocoding for marker's coordinates
+        // Coordinates -> location (poi/address)
         if (marker) {
-            const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${marker.longitude},${marker.latitude}.json?&access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`
-            console.log("marker API CALL");
+            const reverseGeocodingAPI = `https://api.mapbox.com/geocoding/v5/mapbox.places/${marker.longitude},${marker.latitude}.json?&access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`
 
-            axios.get(url)
+            // Make API Call for geocoding (not using useFetch for different api call format)
+            axios.get(reverseGeocodingAPI)
                 .then(({ data }) => {
                     if(data.features && data.features.length > 0 && data.features[0].place_name) {
+                        // Set location to display as the most detailed map feature acquired from reverseGeocodingAPI call
+                        // Usually will be a poi or address
                         setNewLocationName(data.features[0].place_name)
                     }
                 })
@@ -44,9 +49,6 @@ export default function CreatePost(props: iCreatePost) {
                     console.log('error with reverse geocoding: ' + err)
                 });
         }
-
-
-
     }, [marker]);
 
     const descriptionCharacterLimit = 15;
@@ -54,7 +56,6 @@ export default function CreatePost(props: iCreatePost) {
     return (
         <div className="create-post-container">
             <h1 className="h1-findr-title">Share a new (location/activity)</h1>
-
 
             <form className="create-post-input-container" onSubmit={handleSubmit(createPostAPICall)}>
 
@@ -97,8 +98,8 @@ export default function CreatePost(props: iCreatePost) {
                                 <p className="form-info">
                                     Characters remaining: {descriptionCharacterLimit}
                                 </p>
-
                         }
+                        
                     </div>
                 </div>
 
@@ -112,13 +113,11 @@ export default function CreatePost(props: iCreatePost) {
                     />
                 </div>
 
-
                 <input
                     name="submit"
                     className="submit-button"
                     type="submit"
                 />
-
 
             </form>
 
