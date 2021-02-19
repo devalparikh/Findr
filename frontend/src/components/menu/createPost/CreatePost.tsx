@@ -29,17 +29,13 @@ export default function CreatePost(props: iCreatePost) {
     const [uploadedPictures, setUploadedPictures] = useState([] as Array<Array<File>>);
 
     const { register, handleSubmit, watch, errors } = useForm();
-    const [uploadedPictures, setUploadedPictures] = useState([] as Array<Array<File>>);
     const watchAllFields = watch();
 
 
     const createPostAPICall: SubmitHandler<Inputs> = data => {
         console.log(data);
     }
-
-    };
     
-    };
     const onDrop = (pictures: Array<File>) => {
         setUploadedPictures([...uploadedPictures, pictures] as Array<Array<File>>);
     };
@@ -151,7 +147,6 @@ export default function CreatePost(props: iCreatePost) {
                     </div>
                 </div>
 
-
                 <input
                     name="submit"
                     className="submit-button"
@@ -160,7 +155,6 @@ export default function CreatePost(props: iCreatePost) {
                 />
 
             </form>
-
 
         </div>
 
