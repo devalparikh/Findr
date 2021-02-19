@@ -6,6 +6,8 @@ import { iMarker } from '../../../containers/main/Main';
 import axios from 'axios';
 import './CreatePost.css';
 
+import './CreatePost.css';
+
 interface Inputs {
     name: string,
     description: string,
@@ -27,6 +29,7 @@ export default function CreatePost(props: iCreatePost) {
     const [uploadedPictures, setUploadedPictures] = useState([] as Array<Array<File>>);
 
     const { register, handleSubmit, watch, errors } = useForm();
+    const [uploadedPictures, setUploadedPictures] = useState([] as Array<Array<File>>);
     const watchAllFields = watch();
 
 
@@ -34,12 +37,19 @@ export default function CreatePost(props: iCreatePost) {
         console.log(data);
     }
 
+    };
+    
+    };
+    const onDrop = (pictures: Array<File>) => {
+        setUploadedPictures([...uploadedPictures, pictures] as Array<Array<File>>);
+    };
     // Everytime marker updates
     useEffect(() => {
         // Reverse Geocoding for marker's coordinates
         // Coordinates -> location (poi/address)
         if (marker) {
             const reverseGeocodingAPI = `https://api.mapbox.com/geocoding/v5/mapbox.places/${marker.longitude},${marker.latitude}.json?&access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`
+
 
             // Make API Call for geocoding (not using useFetch for different api call format)
             axios.get(reverseGeocodingAPI)
@@ -57,7 +67,7 @@ export default function CreatePost(props: iCreatePost) {
     }, [marker]);
 
     return (
-        <div className="create-post-container">
+        <div className="create-post-container" style={{ marginBottom: "40px" }}>
             <h1 className="h1-findr-title">Share a new (location/activity)</h1>
 
             <form className="create-post-input-container" onSubmit={handleSubmit(createPostAPICall)}>
@@ -116,10 +126,37 @@ export default function CreatePost(props: iCreatePost) {
                     />
                 </div>
 
+                <div className="input-container">
+                    <ImageUploader
+                        withIcon={true}
+                        buttonText={uploadedPictures[uploadedPictures.length - 1] && uploadedPictures[uploadedPictures.length - 1].length > 0 ? 'Add more images' : 'Choose images'}
+                        label="Upload Images"
+                        labelStyles={{ textAlign: 'center', color: 'dimgray' }}
+                        fileContainerStyle={{ backgroundColor: "rgba(255, 255, 255, 0.664)" }}
+                        onChange={onDrop}
+                        imgExtension={['.jpg', '.png', '.jpeg', '.gif']}
+                        maxFileSize={MAX_IMAGE_SIZE}
+                        maxFileCount={MAX_IMAGES_COUNT}
+                        withPreview={true}
+                        dragLabel="or drag & drop images"
+                        previewMaxHeight={500}
+                    />
+                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                        <p className="form-info">
+                            Max file size: 5mb <br />
+                        </p>
+                        <p className="form-info">
+                            Accepts: .jpg, .jpeg, .png, .gif
+                        </p>
+                    </div>
+                </div>
+
+
                 <input
                     name="submit"
                     className="submit-button"
                     type="submit"
+                    style={{ marginBottom: "40px" }}
                 />
 
             </form>
