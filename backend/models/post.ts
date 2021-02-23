@@ -12,6 +12,8 @@ interface PostAttrs {
     likes: number;
     review: number;
     review_count: number;
+    posterId: string;
+    posterUsername: string;
     // traffic: [number];
 }
 
@@ -32,6 +34,8 @@ interface PostDoc extends mongoose.Document {
     likes: number;
     review: number;
     review_count: number;
+    posterId: string;
+    posterUsername: string;
 }
 
 const postSchema = new mongoose.Schema({
@@ -74,8 +78,15 @@ const postSchema = new mongoose.Schema({
     review_count: {
         type: Number,
         required: true
+    },
+    posterId: {
+        type: String,
+        required: true
+    },
+    posterUsername: {
+        type: String,
+        required: true
     }
-    
 }, {
     timestamps: true,
 });
