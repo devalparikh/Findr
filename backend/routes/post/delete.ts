@@ -15,7 +15,7 @@ router.delete(
   [
     body("id")
       .notEmpty()
-      .withMessage('Post ID must be valid or not empty')
+      .withMessage('Post ID is requried.')
       .custom(async (id_value) => {
         // Check if inputted id is a valid id
         var ObjectId = require('mongoose').Types.ObjectId;
