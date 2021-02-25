@@ -1,21 +1,19 @@
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
-import jwt from "jsonwebtoken";
 
-import { validateRequest } from "../middlewares/validate-request";
-import { User } from "../models/user";
-import { Post } from "../models/post";
-import { BadRequestError } from "../errors/bad-request-error";
-import { currentUser } from "../middlewares/current-user";
+import { validateRequest } from "../../middlewares/validate-request";
+import { Post } from "../../models/post";
+import { BadRequestError } from "../../errors/bad-request-error";
+import { currentUser } from "../../middlewares/current-user";
 
 const router = express.Router();
 
 router.post(
-  "/api/posts",
+  "/api/post",
   [
     body("name")
       .notEmpty()
-      .withMessage('Name must be valid'),
+      .withMessage('Name is required'),
     body("description")
       .notEmpty()
       .withMessage('Description is required'),
@@ -77,7 +75,7 @@ router.post(
       .then(() => res.status(201).send(post))
       .catch((err) => {
         console.log(err);
-        throw new BadRequestError(err);
+        throw new BadRequestError(`Error trying to create a new post. ${err}`);
       });
   }
 );
