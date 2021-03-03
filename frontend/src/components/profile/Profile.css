@@ -1,4 +1,4 @@
-/* TODO: Refactor (this was stolen from Home) - centralize this */
+/* (this was stolen from Home) - possibly centralize this */
 .full-container {
     padding: 0px 25px 0px 25px !important;
 }
@@ -18,8 +18,18 @@
     font-weight: 300;
 }
 
+.view-all-card {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    text-align: center;
+    opacity: 0.8;
+    border: none;
+}
 
-/* TODO: Refactor (this was stolen from Home) - centralize this */
+
+/* (this was stolen from Home) - possibly centralize this */
 .home-row-container {
     padding: 0px 0px 25px 0px;
     border-bottom: 1px solid rgb(218, 210, 210);

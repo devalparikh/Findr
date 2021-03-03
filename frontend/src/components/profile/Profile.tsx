@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import PostCard from '../cards/postCard/PostCard';
 
 import './Profile.css';
@@ -31,6 +32,10 @@ function Profile(props: iProfile) {
 
             <Row className="profile-header">
                 <Col xs={12}>
+                    <img style={{ borderRadius: '50%', height: '150px' }} src={'https://www.w3schools.com/howto/img_avatar.png'} />
+
+                </Col>
+                <Col xs={12}>
                     <h1 className="h1-findr-title">{currentUser?.username || <Spinner animation="border" color="#f8f4e3" />}</h1>
 
                 </Col>
@@ -47,6 +52,7 @@ function Profile(props: iProfile) {
                         <PostCard title="Test" location="Location" review={5.0} reviewCount={69} images={tempArray} />
                         <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
                         <PostCard title="Basketball court with 4 hoops inside the community." location="Grand View-on-Hudson, New York" review={5.0} reviewCount={69} images={tempArray} />
+                        <Link to="createpost" className="view-all-card postcard-container">Create New</Link>
                     </Row>
                 </Col>
             </Row>
