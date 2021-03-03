@@ -19,6 +19,7 @@ import CreatePost from '../../components/menu/createPost/CreatePost';
 import Login from '../../components/auth/Login';
 import Signup from '../../components/auth/Signup';
 import { useFetch } from '../../services/useFetch';
+import Profile from '../../components/profile/Profile';
 
 
 //////////////////////
@@ -37,6 +38,8 @@ function Main() {
 
   const [isLoading, APIresult, APIerror, fetchAPI] = useFetch();
 
+  const [currentUser, SetCurrentUser] = useState({});
+
   useEffect(() => {
     fetchAPI({
       method: 'get',
@@ -45,6 +48,9 @@ function Main() {
     });
   }, []);
 
+  useEffect(() => {
+    SetCurrentUser(APIresult?.currentUser);
+  }, [APIresult])
 
 
   useEffect(() => {
@@ -86,10 +92,16 @@ function Main() {
           </div>
         </Route>
 
+        <Route exact path="/profile">
+          <div className="home-container">
+            <Profile currentUser={currentUser}/>
+          </div>
+        </Route>
+
         {/* Menu (left side) */}
         {
 
-          location.pathname !== '/home' && location.pathname !== '/signup' && location.pathname !== '/login' && location.pathname !== '/' &&
+          location.pathname !== '/home' && location.pathname !== '/signup' && location.pathname !== '/login' && location.pathname !== '/profile' &&  location.pathname !== '/' &&
 
           <div className="main-menu-container">
 
@@ -136,7 +148,7 @@ function Main() {
 
         {/* Map (right side) */}
         {
-          location.pathname !== '/home' && location.pathname !== '/signup' && location.pathname !== '/login' && location.pathname !== '/' && screenSize > breakpoint &&
+          location.pathname !== '/home' && location.pathname !== '/signup' && location.pathname !== '/login' && location.pathname !== '/profile' && location.pathname !== '/' && screenSize > breakpoint &&
 
           <div className="main-map-container">
             <MapBox />
