@@ -4,10 +4,11 @@
   border-radius: 20px;
   color: #f8f4e3;
   margin: 10px;
+  transition: 0.2s ease !important;
 }
 
 .postcard-container:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.6);
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.6);
   transition: 0.15s;
   cursor: pointer;
 }
