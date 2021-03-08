@@ -16,6 +16,7 @@ import { signupRouter } from './routes/signup';
 import { postRouter } from './routes/post/post';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
+import { editRouter } from './routes/post/edit';
 import { deleteRouter } from './routes/post/delete';
 
 // Configure env vars in env file
@@ -52,6 +53,7 @@ app.use(signoutRouter);
 app.use(signupRouter);
 app.use(postRouter);
 app.use(deleteRouter);
+app.use(editRouter);
 
 // Mongoose mongodb atlas connection
 const uri = process.env.ATLAS_URI;
