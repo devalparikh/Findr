@@ -1,0 +1,14 @@
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+    border-radius: 1em;
+    background-color: #f8f4e3;
+}
+
+.mapboxgl-ctrl-top-right input:focus {
+    outline: none;
+    border: 1px solid;
+    border-radius: 1em;
+}
+
+.mapboxgl-ctrl-geocoder--button  {
+    background-color: inherit;
+}

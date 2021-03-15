@@ -69,7 +69,7 @@ html {
 
 .main-map-container {
   width: 70%;
-  height: 100vh;
+  height: calc(100vh - 55px);
 }
 
 @media (max-width: 1440px) {

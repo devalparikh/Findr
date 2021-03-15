@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { handleFormValidation } from '../../form/formValidator';
 import { useForm, SubmitHandler } from "react-hook-form";
 import ImageUploader from "../../fileUploader/FileUploader";
+import { iMarker } from '../../../containers/main/Main';
+import axios from 'axios';
+import './CreatePost.css';
 
 import './CreatePost.css';
 
@@ -11,29 +14,57 @@ interface Inputs {
     location?: string
 }
 
+interface iCreatePost {
+    marker: iMarker;
+}
+
 const MAX_DESCRIPITON_CHARACTER_LIMIT = 15;
 const MAX_IMAGES_COUNT = 5;
 const MAX_IMAGE_SIZE = 5242880;
 
-export default function CreatePost() {
-    const { register, handleSubmit, watch, errors } = useForm();
+export default function CreatePost(props: iCreatePost) {
+    const { marker } = props;
+
+    const [newLocationName, setNewLocationName] = useState("");
     const [uploadedPictures, setUploadedPictures] = useState([] as Array<Array<File>>);
+
+    const { register, handleSubmit, watch, errors } = useForm();
     const watchAllFields = watch();
 
 
     const createPostAPICall: SubmitHandler<Inputs> = data => {
         console.log(data);
     }
-
+    
     const onDrop = (pictures: Array<File>) => {
         setUploadedPictures([...uploadedPictures, pictures] as Array<Array<File>>);
     };
+    // Everytime marker updates
+    useEffect(() => {
+        // Reverse Geocoding for marker's coordinates
+        // Coordinates -> location (poi/address)
+        if (marker) {
+            const reverseGeocodingAPI = `https://api.mapbox.com/geocoding/v5/mapbox.places/${marker.longitude},${marker.latitude}.json?&access_token=${process.env.REACT_APP_MAPBOX_API_KEY}`
 
+
+            // Make API Call for geocoding (not using useFetch for different api call format)
+            axios.get(reverseGeocodingAPI)
+                .then(({ data }) => {
+                    if(data.features && data.features.length > 0 && data.features[0].place_name) {
+                        // Set location to display as the most detailed map feature acquired from reverseGeocodingAPI call
+                        // Usually will be a poi or address
+                        setNewLocationName(data.features[0].place_name)
+                    }
+                })
+                .catch(err => {
+                    console.log('error with reverse geocoding: ' + err)
+                });
+        }
+    }, [marker]);
 
     return (
         <div className="create-post-container" style={{ marginBottom: "40px" }}>
             <h1 className="h1-findr-title">Share a new (location/activity)</h1>
-
 
             <form className="create-post-input-container" onSubmit={handleSubmit(createPostAPICall)}>
 
@@ -77,6 +108,7 @@ export default function CreatePost() {
                                     Characters remaining: {MAX_DESCRIPITON_CHARACTER_LIMIT}
                                 </p>
                         }
+                        
                     </div>
                 </div>
 
@@ -84,7 +116,7 @@ export default function CreatePost() {
                     <input
                         name="location"
                         className="input user-post-location"
-                        placeholder="(disabled) Select a location on the map"
+                        placeholder={`${newLocationName}: ${marker.latitude}, ${marker.longitude}`}
                         disabled={true}
                         ref={register}
                     />
@@ -115,7 +147,6 @@ export default function CreatePost() {
                     </div>
                 </div>
 
-
                 <input
                     name="submit"
                     className="submit-button"
@@ -123,9 +154,7 @@ export default function CreatePost() {
                     style={{ marginBottom: "40px" }}
                 />
 
-
             </form>
-
 
         </div>
 
