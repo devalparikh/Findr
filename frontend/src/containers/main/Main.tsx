@@ -93,15 +93,23 @@ function Main() {
         </Route>
 
         <Route exact path="/profile">
-          <div className="home-container">
-            <Profile currentUser={currentUser}/>
-          </div>
+          {
+            currentUser ?
+              <div className="home-container">
+                <Profile currentUser={currentUser} />
+              </div>
+              :
+              <div className="login-container">
+                <Login />
+              </div>
+          }
+
         </Route>
 
         {/* Menu (left side) */}
         {
 
-          location.pathname !== '/home' && location.pathname !== '/signup' && location.pathname !== '/login' && location.pathname !== '/profile' &&  location.pathname !== '/' &&
+          location.pathname !== '/home' && location.pathname !== '/signup' && location.pathname !== '/login' && location.pathname !== '/profile' && location.pathname !== '/' &&
 
           <div className="main-menu-container">
 

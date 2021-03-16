@@ -43,7 +43,9 @@ export default function AuthCard(props: iAuthCard) {
         }
 
         if (APIStatusCode === 200) {
-            history.push(`/home`);
+            // history.push(`/home`);
+            window.location.href = "/profile";
+
         }
 
     }, [APIerror, APIStatusCode])
