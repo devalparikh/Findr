@@ -62,6 +62,8 @@ function Navbar() {
         <NavLink onClick={handleNavLinkPress} exact to='/category-result/1/subcategory-result/2' className="navBarButton" activeClassName="selectedNavBarButton">Subcategory</NavLink>
         <NavLink onClick={handleNavLinkPress} exact to='/category-result/1/subcategory-result/2/uuid/1' className="navBarButton" activeClassName="selectedNavBarButton">UUID</NavLink>
         <NavLink onClick={handleNavLinkPress} exact to='/createpost' className="navBarButton" activeClassName="selectedNavBarButton">Post</NavLink>
+        <NavLink onClick={handleNavLinkPress} exact to='/profile' className="navBarButton" activeClassName="selectedNavBarButton">Profile</NavLink>
+
       </div>
 
 
