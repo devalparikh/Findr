@@ -36,16 +36,18 @@ export default function AuthCard(props: iAuthCard) {
 
     useEffect(() => {
         // Update form errors
-        if (APIerror && APIerror.data.errors) {
+        if (!APIresult && APIerror && APIerror.data.errors) {
             APIerror.data.errors.map((errObj: errObj) => {
                 return setFormFieldErrors((prevState) => ({ ...prevState, [errObj.field]: errObj.message }));
             });
         }
 
         if (APIStatusCode === 200) {
-            // history.push(`/home`);
+            // history.push(`/home`); // Does not refresh
+            localStorage.setItem('loggedIn', 'true');
             window.location.href = "/profile";
-
+        } else {
+            localStorage.removeItem('loggedIn');
         }
 
     }, [APIerror, APIStatusCode])
@@ -58,7 +60,7 @@ export default function AuthCard(props: iAuthCard) {
             url: 'api/users/signin',
             data: form_data,
             withCredentials: true
-        }); 
+        });
     }
 
     const signupAPICall: SubmitHandler<Inputs> = async form_data => {
@@ -79,7 +81,7 @@ export default function AuthCard(props: iAuthCard) {
                 <form onSubmit={handleSubmit(signupAPICall)}>
                     <div className="input-container">
                         <div className="icon-input">
-                            <img className="" src={emailIcon} alt="emailIcon"/>
+                            <img className="" src={emailIcon} alt="emailIcon" />
                             <input
                                 name="email"
                                 className="input user-post-name"
@@ -95,7 +97,7 @@ export default function AuthCard(props: iAuthCard) {
 
                     <div className="input-container">
                         <div className="icon-input">
-                            <img src={userIcon} alt="userIcon"/>
+                            <img src={userIcon} alt="userIcon" />
                             <input
                                 name="username"
                                 type="username"
@@ -110,7 +112,7 @@ export default function AuthCard(props: iAuthCard) {
 
                     <div className="input-container">
                         <div className="icon-input">
-                            <img src={lockIcon} style={{ width: "16px" }} alt="lockIcon"/>
+                            <img src={lockIcon} style={{ width: "16px" }} alt="lockIcon" />
                             <input
                                 type="password"
                                 name="password"
@@ -129,7 +131,7 @@ export default function AuthCard(props: iAuthCard) {
 
                     <div className="input-container">
                         <div className="icon-input">
-                            <img className="login-input-icon" src={confirmLockIcon} style={{ width: "16px" }} alt="confirmLockIcon"/>
+                            <img className="login-input-icon" src={confirmLockIcon} style={{ width: "16px" }} alt="confirmLockIcon" />
                             <input
                                 type="password"
                                 name="confirmPassword"
@@ -179,7 +181,7 @@ export default function AuthCard(props: iAuthCard) {
                 <form onSubmit={handleSubmit(loginAPICall)}>
                     <div className="input-container">
                         <div className="icon-input">
-                            <img src={userIcon} alt="userIcon"/>
+                            <img src={userIcon} alt="userIcon" />
                             <input
                                 name="username"
                                 className="input user-post-name"
@@ -193,7 +195,7 @@ export default function AuthCard(props: iAuthCard) {
                     </div>
                     <div className="input-container">
                         <div className="icon-input">
-                            <img className="login-input-icon" src={lockIcon} style={{ width: "16px" }} alt="lockIcon"/>
+                            <img className="login-input-icon" src={lockIcon} style={{ width: "16px" }} alt="lockIcon" />
                             <input
                                 type="password"
                                 name="password"
@@ -238,7 +240,20 @@ export default function AuthCard(props: iAuthCard) {
         )
     }
 
+    function renderLoading() {
+        return (
+            <div className="auth-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div className="spinner">
+                    <Spinner animation="border" color="#f8f4e3" />
+                </div>
+            </div>
+        )
+    }
+
     return (
-        props.type === "login" ? renderLogin() : props.type === "signup" ? renderSignUp() : <div> Insert correct prop type</div>
+        APIStatusCode !== 200 ?
+            props.type === "login" ? renderLogin() : props.type === "signup" ? renderSignUp() : <div> Insert correct prop type</div>
+            :
+            renderLoading()
     )
 }

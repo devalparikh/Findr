@@ -25,7 +25,6 @@ function Profile(props: iProfile) {
     ];
 
     const { currentUser } = props;
-    console.log(currentUser)
 
     return (
         <Container fluid className="full-container">
@@ -40,7 +39,8 @@ function Profile(props: iProfile) {
 
                 </Col>
                 <Col xs={12}>
-                    <div className="points-title">{currentUser?.points || <Spinner animation="border" color="#f8f4e3" />}&nbsp;points</div>
+                    {/* <div className="points-title">{currentUser?.points || <Spinner animation="border" color="#f8f4e3" />}&nbsp;points</div> */}
+                    <div className="points-title">15 points</div>
                 </Col>
             </Row>
 

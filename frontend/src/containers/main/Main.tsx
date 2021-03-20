@@ -50,7 +50,16 @@ function Main() {
 
   useEffect(() => {
     SetCurrentUser(APIresult?.currentUser);
+    if (APIresult?.currentUser) {
+      localStorage.setItem('loggedIn', 'true');
+    }
   }, [APIresult])
+
+  useEffect(() => {
+    if (APIerror) {
+      localStorage.removeItem('loggedIn');
+    }
+  }, [APIerror])
 
 
   useEffect(() => {
@@ -94,7 +103,7 @@ function Main() {
 
         <Route exact path="/profile">
           {
-            currentUser ?
+            localStorage.getItem('loggedIn') ?
               <div className="home-container">
                 <Profile currentUser={currentUser} />
               </div>
