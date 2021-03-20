@@ -13,8 +13,11 @@ import { currentUserRouter } from './routes/current-user';
 import { signinRouter } from './routes/signin';
 import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
+import { postRouter } from './routes/post/post';
 import { errorHandler } from './middlewares/error-handler';
 import { NotFoundError } from './errors/not-found-error';
+import { editRouter } from './routes/post/edit';
+import { deleteRouter } from './routes/post/delete';
 
 // Configure env vars in env file
 require('dotenv').config();
@@ -48,6 +51,9 @@ app.use(currentUserRouter);
 app.use(signinRouter);
 app.use(signoutRouter);
 app.use(signupRouter);
+app.use(postRouter);
+app.use(deleteRouter);
+app.use(editRouter);
 
 // Mongoose mongodb atlas connection
 const uri = process.env.ATLAS_URI;
